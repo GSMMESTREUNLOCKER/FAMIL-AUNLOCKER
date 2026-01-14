@@ -166,6 +166,38 @@ p {
     width: 28px;
     height: 28px;
 }
+
+/* ===== EFEITO HACKER OEM (MOUSE) ===== */
+#hacker-cursor {
+    position: fixed;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: rgba(0,255,100,0.9);
+    box-shadow: 0 0 12px #00ff66, 0 0 24px rgba(0,255,100,0.6);
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.hacker-trail {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: rgba(0,255,100,0.6);
+    box-shadow: 0 0 10px #00ff66;
+    z-index: 9998;
+    animation: hackerFade 0.6s linear forwards;
+}
+
+@keyframes hackerFade {
+    to {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+}
 </style>
 </head>
 
@@ -186,7 +218,6 @@ p {
         </div>
     </div>
 
-    <!-- ATUALIZAÇÕES BETA BLOQUEADO -->
     <span class="btn beta">🔄 Atualizações BETA</span>
 </div>
 
@@ -257,6 +288,24 @@ romsBtn.addEventListener("click", function (e) {
 
 document.addEventListener("click", function () {
     romsMenu.style.display = "none";
+});
+
+/* ===== CURSOR HACKER OEM ===== */
+const hackerCursor = document.createElement("div");
+hackerCursor.id = "hacker-cursor";
+document.body.appendChild(hackerCursor);
+
+document.addEventListener("mousemove", e => {
+    hackerCursor.style.left = e.clientX + "px";
+    hackerCursor.style.top = e.clientY + "px";
+
+    const trail = document.createElement("div");
+    trail.className = "hacker-trail";
+    trail.style.left = e.clientX + "px";
+    trail.style.top = e.clientY + "px";
+    document.body.appendChild(trail);
+
+    setTimeout(() => trail.remove(), 600);
 });
 </script>
 
