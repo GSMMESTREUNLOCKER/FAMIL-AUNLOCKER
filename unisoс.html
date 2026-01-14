@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>REALME UNISOC / SPREADTRUM | Família Unlocker</title>
 
 <style>
@@ -26,18 +27,29 @@ html, body {
     pointer-events: none;
 }
 
-/* CONTEÚDO */
-.container {
+/* CENTRALIZAÇÃO TOTAL */
+.wrapper {
     position: relative;
     z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding-top: 80px;
+}
+
+/* CONTEÚDO */
+.container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
     color: #00ff66;
 }
 
 /* TÍTULO */
 h1 {
-    font-size: 42px;
+    font-size: 36px;
     text-shadow: 0 0 25px #00ff66;
     margin-bottom: 10px;
 }
@@ -45,8 +57,8 @@ h1 {
 /* SUBTÍTULO */
 p {
     color: #ccc;
-    margin-bottom: 40px;
-    font-size: 16px;
+    margin-bottom: 35px;
+    font-size: 15px;
 }
 
 /* LINKS */
@@ -54,16 +66,17 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 18px;
 }
 
 /* BOTÃO */
 .btn {
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     padding: 16px;
     background: #00ff66;
     color: black;
-    font-size: 17px;
+    font-size: 16px;
     border-radius: 30px;
     text-decoration: none;
     font-weight: bold;
@@ -79,10 +92,21 @@ p {
 /* VOLTAR */
 .back {
     display: block;
-    margin-top: 50px;
+    margin-top: 35px;
     color: #00ff66;
     text-decoration: none;
     font-size: 14px;
+}
+
+/* AJUSTES MOBILE */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 14px;
+    }
 }
 </style>
 </head>
@@ -91,61 +115,47 @@ p {
 
 <canvas id="iceRain"></canvas>
 
-<div class="container">
-    <h1>REALME UNISOC / SPREADTRUM</h1>
-    <p>ROMs • Flash • Arquivos técnicos</p>
+<div class="wrapper">
+    <div class="container">
+        <h1>REALME UNISOC / SPREADTRUM</h1>
+        <p>ROMs • Flash • Arquivos técnicos</p>
 
-    <div class="links">
-        <a class="btn"
-           href="https://drive.google.com/file/d/1fX_2vEuNz0fh6ErQBKO9ZhRE4VECxWh2/view?usp=drive_link"
-           target="_blank">
-           📥 Flash Realme C61
-        </a>
+        <div class="links">
+            <a class="btn" href="https://drive.google.com/file/d/1fX_2vEuNz0fh6ErQBKO9ZhRE4VECxWh2/view?usp=drive_link" target="_blank">
+                📥 Flash Realme C61
+            </a>
 
-        <a class="btn"
-           href="https://drive.google.com/file/d/1f3bulR2s6h6zTKaeIwXcAZE7h2GPPYuI/view?usp=sharing"
-           target="_blank">
-           📥 Flash Realme Note 60X
-        </a>
+            <a class="btn" href="https://drive.google.com/file/d/1f3bulR2s6h6zTKaeIwXcAZE7h2GPPYuI/view?usp=sharing" target="_blank">
+                📥 Flash Realme Note 60X
+            </a>
 
-        <a class="btn"
-           href="https://drive.google.com/file/d/1I9btrFz4CH5LpLb3-W9oNwU7c5fcfKft/view?usp=sharing"
-           target="_blank">
-           📥 Flash Realme Note 60
-        </a>
+            <a class="btn" href="https://drive.google.com/file/d/1I9btrFz4CH5LpLb3-W9oNwU7c5fcfKft/view?usp=sharing" target="_blank">
+                📥 Flash Realme Note 60
+            </a>
 
-        <a class="btn"
-           href="https://drive.google.com/file/d/17j0BB5dSiWxMNICT9TzUjLJTbtLFwyyj/view?usp=sharing"
-           target="_blank">
-           📥 Flash Realme C63
-        </a>
+            <a class="btn" href="https://drive.google.com/file/d/17j0BB5dSiWxMNICT9TzUjLJTbtLFwyyj/view?usp=sharing" target="_blank">
+                📥 Flash Realme C63
+            </a>
 
-        <a class="btn"
-           href="https://drive.google.com/file/d/1ONXtwrHqSVKVAxEGS6MNwSTQRw3avACn/view?usp=sharing"
-           target="_blank">
-           📥 DUMP NOTE 70 MDM GRATIS
-        </a>
+            <a class="btn" href="https://drive.google.com/file/d/1ONXtwrHqSVKVAxEGS6MNwSTQRw3avACn/view?usp=sharing" target="_blank">
+                📥 DUMP NOTE 70 MDM GRÁTIS
+            </a>
 
-        <a class="btn"
-           href="https://drive.google.com/file/d/1dSfHUu62A3EAxVy7zEvi3xbJ-ZP0lprL/view?usp=sharing"
-           target="_blank">
-           📥 Flash Realme C71
-        </a>
+            <a class="btn" href="https://drive.google.com/file/d/1dSfHUu62A3EAxVy7zEvi3xbJ-ZP0lprL/view?usp=sharing" target="_blank">
+                📥 Flash Realme C71
+            </a>
 
-        <a class="btn"
-           href="https://drive.google.com/file/d/1Q57zwQ48oZsy2M8rCWfXO7vK4c_59PpX/view?usp=sharing"
-           target="_blank">
-           📥 Flash Realme C53
-        </a>
+            <a class="btn" href="https://drive.google.com/file/d/1Q57zwQ48oZsy2M8rCWfXO7vK4c_59PpX/view?usp=sharing" target="_blank">
+                📥 Flash Realme C53
+            </a>
 
-        <a class="btn"
-           href="https://drive.google.com/file/d/1ZqlKmxxGqCu9_d1aXrSeQvgXykt_gZhu/view?usp=sharing"
-           target="_blank">
-           📥 Flash Realme Note 50
-        </a>
+            <a class="btn" href="https://drive.google.com/file/d/1ZqlKmxxGqCu9_d1aXrSeQvgXykt_gZhu/view?usp=sharing" target="_blank">
+                📥 Flash Realme Note 50
+            </a>
+        </div>
+
+        <a class="back" href="index.html">⬅ Voltar</a>
     </div>
-
-    <a class="back" href="index.html">⬅ Voltar</a>
 </div>
 
 <script>
