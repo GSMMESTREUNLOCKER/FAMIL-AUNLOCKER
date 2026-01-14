@@ -1,0 +1,83 @@
+<script>
+const canvas = document.getElementById("fx");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+}
+resize();
+onresize = resize;
+
+/* GOTAS DE ÁCIDO */
+let drops = [];
+for (let i = 0; i < 420; i++) {
+    drops.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        speed: 8 + Math.random() * 10,
+        length: 25 + Math.random() * 35,
+        width: 1 + Math.random() * 1.5
+    });
+}
+
+/* CHUVA ÁCIDA */
+function acidRain() {
+    ctx.fillStyle = "rgba(0,0,0,0.25)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    for (let d of drops) {
+        ctx.strokeStyle = "#00ff66";
+        ctx.lineWidth = d.width;
+        ctx.beginPath();
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x, d.y + d.length);
+        ctx.stroke();
+
+        /* respingo ácido */
+        ctx.fillStyle = "rgba(0,255,100,0.4)";
+        ctx.fillRect(d.x - 1, d.y + d.length, 2, 2);
+
+        d.y += d.speed;
+        if (d.y > canvas.height) {
+            d.y = -50;
+            d.x = Math.random() * canvas.width;
+        }
+    }
+}
+
+/* RELÂMPAGO SOMBRIO */
+function lightning() {
+    // flash escuro
+    ctx.fillStyle = "rgba(0,255,100,0.25)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    let x = Math.random() * canvas.width;
+    let y = 0;
+
+    ctx.strokeStyle = "#99ffcc";
+    ctx.lineWidth = 3;
+    ctx.shadowBlur = 30;
+    ctx.shadowColor = "#00ff66";
+
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+
+    for (let i = 0; i < 15; i++) {
+        x += Math.random() * 80 - 40;
+        y += Math.random() * 70;
+        ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+}
+
+/* LOOP */
+function animate() {
+    acidRain();
+    if (Math.random() < 0.06) lightning();
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>

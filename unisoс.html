@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>REALME UNISOC / SPREADTRUM | Família Unlocker</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CANVAS DA CHUVA DE CRISTAL */
+#iceRain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* CONTEÚDO */
+.container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 80px;
+    color: #00ff66;
+}
+
+/* TÍTULO */
+h1 {
+    font-size: 42px;
+    text-shadow: 0 0 25px #00ff66;
+    margin-bottom: 10px;
+}
+
+/* SUBTÍTULO */
+p {
+    color: #ccc;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+/* LINKS */
+.links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* BOTÃO */
+.btn {
+    width: 320px;
+    padding: 16px;
+    background: #00ff66;
+    color: black;
+    font-size: 17px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 25px #00ff66;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #00cc55;
+    box-shadow: 0 0 40px #00ff66;
+}
+
+/* VOLTAR */
+.back {
+    display: block;
+    margin-top: 50px;
+    color: #00ff66;
+    text-decoration: none;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="iceRain"></canvas>
+
+<div class="container">
+    <h1>REALME UNISOC / SPREADTRUM</h1>
+    <p>ROMs • Flash • Arquivos técnicos</p>
+
+    <div class="links">
+        <a class="btn"
+           href="https://drive.google.com/file/d/1fX_2vEuNz0fh6ErQBKO9ZhRE4VECxWh2/view?usp=drive_link"
+           target="_blank">
+           📥 Flash Realme C61
+        </a>
+
+        <a class="btn"
+           href="https://drive.google.com/file/d/1f3bulR2s6h6zTKaeIwXcAZE7h2GPPYuI/view?usp=sharing"
+           target="_blank">
+           📥 Flash Realme Note 60X
+        </a>
+
+        <a class="btn"
+           href="https://drive.google.com/file/d/1I9btrFz4CH5LpLb3-W9oNwU7c5fcfKft/view?usp=sharing"
+           target="_blank">
+           📥 Flash Realme Note 60
+        </a>
+
+        <a class="btn"
+           href="https://drive.google.com/file/d/17j0BB5dSiWxMNICT9TzUjLJTbtLFwyyj/view?usp=sharing"
+           target="_blank">
+           📥 Flash Realme C63
+        </a>
+
+        <a class="btn"
+           href="https://drive.google.com/file/d/1ONXtwrHqSVKVAxEGS6MNwSTQRw3avACn/view?usp=sharing"
+           target="_blank">
+           📥 DUMP NOTE 70 MDM GRATIS
+        </a>
+
+        <a class="btn"
+           href="https://drive.google.com/file/d/1dSfHUu62A3EAxVy7zEvi3xbJ-ZP0lprL/view?usp=sharing"
+           target="_blank">
+           📥 Flash Realme C71
+        </a>
+
+        <a class="btn"
+           href="https://drive.google.com/file/d/1Q57zwQ48oZsy2M8rCWfXO7vK4c_59PpX/view?usp=sharing"
+           target="_blank">
+           📥 Flash Realme C53
+        </a>
+
+        <a class="btn"
+           href="https://drive.google.com/file/d/1ZqlKmxxGqCu9_d1aXrSeQvgXykt_gZhu/view?usp=sharing"
+           target="_blank">
+           📥 Flash Realme Note 50
+        </a>
+    </div>
+
+    <a class="back" href="index.html">⬅ Voltar</a>
+</div>
+
+<script>
+const canvas = document.getElementById("iceRain");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+/* CHUVA DE CRISTAL */
+let crystals = [];
+const total = 160;
+
+class Crystal {
+    constructor() { this.reset(); }
+
+    reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speed = Math.random() * 2 + 1;
+        this.alpha = Math.random() * 0.6 + 0.4;
+    }
+
+    draw() {
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(160,220,255,${this.alpha})`;
+        ctx.lineWidth = this.size;
+        ctx.shadowBlur = 12;
+        ctx.shadowColor = "#9be7ff";
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x + this.size, this.y + this.size * 4);
+        ctx.stroke();
+    }
+
+    update() {
+        this.y += this.speed;
+        if (this.y > canvas.height) {
+            this.reset();
+            this.y = 0;
+        }
+        this.draw();
+    }
+}
+
+for (let i = 0; i < total; i++) {
+    crystals.push(new Crystal());
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    crystals.forEach(c => c.update());
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
