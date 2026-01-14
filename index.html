@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- VIEWPORT AJUSTADO (ZOOM MAIS SUAVE NO CELULAR) -->
+<!-- VIEWPORT AJUSTADO -->
 <meta name="viewport" content="width=device-width, initial-scale=1.20, maximum-scale=3.0, user-scalable=yes">
 
 <title>Família Unlocker - Área Técnica</title>
@@ -19,8 +19,8 @@
 body {
     background: black;
     color: #00ff66;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
 /* CANVAS */
@@ -34,24 +34,33 @@ body {
     pointer-events: none;
 }
 
-/* CONTEÚDO */
+/* CONTAINER PADRÃO (PC) */
 .container {
     position: relative;
     z-index: 2;
+    max-width: 600px;
+    margin: auto;
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
-    padding: 0 15px;
+    padding: 20px 15px;
 }
 
-/* ZOOM LEVE NO CELULAR */
+/* 📱 AJUSTE DEFINITIVO PARA CELULAR */
 @media (max-width: 768px) {
-    .container {
-        transform: translateY(-50%) scale(1.10);
-    }
 
     body {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
         overflow-y: auto;
+    }
+
+    .container {
+        top: 0;
+        transform: scale(1.10);
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
 }
 
@@ -85,7 +94,6 @@ p {
     transition: 0.3s;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
 }
 
 .btn:hover {
@@ -123,7 +131,7 @@ p {
     background: rgba(0,255,100,0.15);
 }
 
-/* RESPONSIVO */
+/* RESPONSIVO BOTÕES */
 @media (max-width: 768px) {
     h1 {
         font-size: 34px;
@@ -131,7 +139,6 @@ p {
 
     p {
         font-size: 15px;
-        margin-bottom: 24px;
     }
 
     .btn {
@@ -139,25 +146,14 @@ p {
         max-width: 340px;
         font-size: 16px;
         padding: 14px 0;
-        margin: 10px auto;
         display: block;
+        margin: 10px auto;
     }
 
     .dropdown-content {
         min-width: 90%;
         left: 50%;
         transform: translateX(-50%);
-    }
-}
-
-/* TELAS MUITO PEQUENAS */
-@media (max-width: 380px) {
-    h1 {
-        font-size: 30px;
-    }
-
-    .btn {
-        font-size: 15px;
     }
 }
 
@@ -171,7 +167,6 @@ p {
     color: #00ff66;
     opacity: 0.45;
     z-index: 3;
-    user-select: none;
 }
 </style>
 </head>
@@ -211,7 +206,7 @@ window.addEventListener("resize", resize);
 
 /* CHUVA */
 let drops = [];
-for (let i = 0; i < 300; i++) {
+for (let i = 0; i < 280; i++) {
     drops.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -239,16 +234,6 @@ function rain() {
     }
 }
 
-/* RELÂMPAGO */
-function lightning() {
-    ctx.fillStyle = "rgba(0,255,100,0.10)";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
-
-setInterval(() => {
-    if (Math.random() < 0.10) lightning();
-}, 500);
-
 function animate() {
     rain();
     requestAnimationFrame(animate);
@@ -268,13 +253,6 @@ romsBtn.addEventListener("click", (e) => {
 document.addEventListener("click", () => {
     romsMenu.style.display = "none";
 });
-
-/* CONSOLE */
-console.log(
-"%croot@familia-unlocker:~# acesso autorizado\n%cGSM MESTRE UNLOCKER | UNISOC • OTA • ANDROID SECURITY",
-"color:#00ff66;font-size:14px;font-weight:bold;",
-"color:#888;font-size:12px;"
-);
 </script>
 
 </body>
