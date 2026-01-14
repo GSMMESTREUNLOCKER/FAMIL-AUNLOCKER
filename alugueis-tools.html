@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.15, maximum-scale=2.5">
+
+<title>Aluguéis de Tools | Família Unlocker</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: black;
+    color: #00ff66;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* CHUVA HACKER */
+canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+}
+
+/* CONTEÚDO */
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+/* TÍTULO */
+h1 {
+    text-align: center;
+    margin: 35px 0 10px;
+    font-size: 38px;
+    text-shadow: 0 0 25px #00ff66;
+}
+
+.subtitle {
+    text-align: center;
+    color: #ccc;
+    font-size: 15px;
+    margin-bottom: 40px;
+}
+
+/* GRID */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 30px;
+    padding: 0 40px 60px;
+}
+
+/* CARD */
+.tool-card {
+    position: relative;
+    background: rgba(120,120,120,0.18);
+    backdrop-filter: blur(6px);
+    border-radius: 22px;
+    padding: 30px 22px 28px;
+    text-align: center;
+    border: 1px solid rgba(0,255,100,0.35);
+    box-shadow: 0 0 28px rgba(0,255,100,0.25);
+    transition: 0.35s;
+}
+
+.tool-card:hover {
+    transform: scale(1.06);
+    box-shadow: 0 0 45px rgba(0,255,100,0.8);
+}
+
+/* ON PISCANDO */
+.status-on {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 20px;
+    color: black;
+    background: #00ff66;
+    box-shadow: 0 0 12px #00ff66, 0 0 26px rgba(0,255,100,0.9);
+    animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0.4; }
+}
+
+/* ÍCONE IMG */
+.tool-icon {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 18px;
+}
+
+/* ÍCONE EMOJI (FENYX) */
+.emoji-icon {
+    font-size: 64px;
+    display: block;
+    margin-bottom: 18px;
+    filter: drop-shadow(0 0 12px rgba(255,0,0,0.8));
+}
+
+/* NOME CINZA */
+.tool-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: rgba(200,200,200,0.65);
+}
+
+/* STATUS */
+.tool-status {
+    font-size: 13px;
+    margin-bottom: 18px;
+    color: #00ff66;
+    text-shadow: 0 0 10px #00ff66;
+}
+
+/* BOTÃO */
+.tool-btn {
+    display: inline-block;
+    padding: 10px 26px;
+    background: linear-gradient(135deg, #00ff66, #00cc55);
+    color: black;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 18px rgba(0,255,100,0.8);
+}
+
+/* VOLTAR */
+.back {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.back a {
+    color: #00ff66;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="rain"></canvas>
+
+<div class="content">
+
+<h1>🛠️ Aluguéis de Tools</h1>
+<div class="subtitle">Ferramentas OEM • Software Profissional • Acesso Controlado</div>
+
+<div class="tools-grid">
+
+<div class="tool-card">
+    <div class="status-on">ON</div>
+    <img class="tool-icon" src="https://cdn-icons-png.flaticon.com/512/5969/5969113.png">
+    <div class="tool-name">SAMSUNG TOOL</div>
+    <div class="tool-status">STATUS OPERACIONAL</div>
+    <a class="tool-btn" href="https://wa.me/5569992383868" target="_blank">SOLICITAR ACESSO</a>
+</div>
+
+<div class="tool-card">
+    <div class="status-on">ON</div>
+    <img class="tool-icon" src="https://cdn-icons-png.flaticon.com/512/906/906334.png">
+    <div class="tool-name">TSM TOOL</div>
+    <div class="tool-status">STATUS OPERACIONAL</div>
+    <a class="tool-btn" href="https://wa.me/5569992383868" target="_blank">SOLICITAR ACESSO</a>
+</div>
+
+<div class="tool-card">
+    <div class="status-on">ON</div>
+    <img class="tool-icon" src="https://cdn-icons-png.flaticon.com/512/888/888879.png">
+    <div class="tool-name">ANDROID MULTI TOOL</div>
+    <div class="tool-status">STATUS OPERACIONAL</div>
+    <a class="tool-btn" href="https://wa.me/5569992383868" target="_blank">SOLICITAR ACESSO</a>
+</div>
+
+<div class="tool-card">
+    <div class="status-on">ON</div>
+    <img class="tool-icon" src="https://cdn-icons-png.flaticon.com/512/1055/1055646.png">
+    <div class="tool-name">UNLOCKER TOOL</div>
+    <div class="tool-status">STATUS OPERACIONAL</div>
+    <a class="tool-btn" href="https://wa.me/5569992383868" target="_blank">SOLICITAR ACESSO</a>
+</div>
+
+<div class="tool-card">
+    <div class="status-on">ON</div>
+    <span class="emoji-icon">🐦</span>
+    <div class="tool-name">FENYX TOOL</div>
+    <div class="tool-status">STATUS OPERACIONAL</div>
+    <a class="tool-btn" href="https://wa.me/5569992383868" target="_blank">SOLICITAR ACESSO</a>
+</div>
+
+</div>
+
+<div class="back">
+    <a href="index.html">← Voltar para o início</a>
+</div>
+
+</div>
+
+<script>
+const canvas = document.getElementById("rain");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+const chars = "01";
+const drops = Array(Math.floor(canvas.width / 14)).fill(0);
+
+function draw() {
+    ctx.fillStyle = "rgba(0,0,0,0.05)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle = "#ff0000";
+    ctx.font = "14px monospace";
+
+    drops.forEach((y,i)=>{
+        const text = chars[Math.floor(Math.random()*chars.length)];
+        ctx.fillText(text, i*14, y*14);
+        if(y*14 > canvas.height && Math.random()>0.975) drops[i]=0;
+        drops[i]++;
+    });
+}
+setInterval(draw, 50);
+</script>
+
+</body>
+</html>
