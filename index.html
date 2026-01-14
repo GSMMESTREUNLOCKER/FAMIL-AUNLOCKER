@@ -2,257 +2,166 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<title>Família Unlocker</title>
 
-<!-- VIEWPORT AJUSTADO -->
-<meta name="viewport" content="width=device-width, initial-scale=1.20, maximum-scale=3.0, user-scalable=yes">
-
-<title>Família Unlocker - Área Técnica</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-* {
+html, body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
+    width: 100%;
+    height: 100%;
     background: black;
-    color: #00ff66;
-    min-height: 100vh;
-    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
 }
 
-/* CANVAS */
-#fx {
+/* CANVAS DA CHUVA */
+#rain {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 0;
-    pointer-events: none;
 }
 
-/* CONTAINER PADRÃO (PC) */
+/* CONTAINER */
 .container {
     position: relative;
     z-index: 2;
-    max-width: 600px;
-    margin: auto;
-    top: 50%;
-    transform: translateY(-50%);
+    color: #00ff66;
     text-align: center;
-    padding: 20px 15px;
-}
-
-/* 📱 AJUSTE DEFINITIVO PARA CELULAR */
-@media (max-width: 768px) {
-
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        overflow-y: auto;
-    }
-
-    .container {
-        top: 0;
-        transform: scale(1.10);
-        margin-top: 40px;
-        margin-bottom: 40px;
-    }
+    padding-top: 90px; /* <<< POSIÇÃO IGUAL AO PRINT */
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 /* TÍTULO */
 h1 {
-    font-size: 48px;
-    color: #00ff66;
-    text-shadow: 0 0 25px #00ff66;
-    margin-bottom: 15px;
+    font-size: 2.4em;
+    margin-bottom: 8px;
+    text-shadow: 0 0 18px #00ff66;
 }
 
-/* SUB */
-p {
-    color: #ccc;
-    margin-bottom: 30px;
-    font-size: 18px;
+/* SUBTÍTULO */
+.subtitle {
+    font-size: 1em;
+    opacity: 0.85;
+    margin-bottom: 35px;
 }
 
-/* BOTÕES */
-.btn {
-    display: inline-block;
-    margin: 12px;
-    padding: 14px 40px;
+/* BOTÃO CIRCULAR */
+.circle-btn {
+    width: 120px;
+    height: 120px;
+    background: #00ff66;
+    border-radius: 50%;
+    margin: 0 auto 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: bold;
+    box-shadow: 0 0 30px #00ff66;
+}
+
+/* BOTÃO GRANDE */
+.big-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width: 360px;
+    margin: auto;
+    padding: 18px;
+    border-radius: 50px;
     background: #00ff66;
     color: black;
-    font-size: 18px;
-    border-radius: 30px;
-    text-decoration: none;
+    font-size: 1.1em;
     font-weight: bold;
-    box-shadow: 0 0 25px #00ff66;
-    transition: 0.3s;
-    cursor: pointer;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.btn:hover {
-    background: #00cc55;
-    box-shadow: 0 0 40px #00ff66;
-}
-
-/* DROPDOWN */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background: rgba(0, 0, 0, 0.95);
-    min-width: 220px;
-    border-radius: 20px;
-    box-shadow: 0 0 25px #00ff66;
-    margin-top: 12px;
-    z-index: 999;
-}
-
-.dropdown-content a {
-    display: block;
-    padding: 14px;
-    color: #00ff66;
     text-decoration: none;
-    font-weight: bold;
-    border-bottom: 1px solid rgba(0,255,100,0.2);
+    box-shadow: 0 0 30px #00ff66;
 }
 
-.dropdown-content a:hover {
-    background: rgba(0,255,100,0.15);
-}
-
-/* RESPONSIVO BOTÕES */
+/* MOBILE FINO */
 @media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+    }
+
     h1 {
-        font-size: 34px;
+        font-size: 2.2em;
     }
-
-    p {
-        font-size: 15px;
-    }
-
-    .btn {
-        width: 90%;
-        max-width: 340px;
-        font-size: 16px;
-        padding: 14px 0;
-        display: block;
-        margin: 10px auto;
-    }
-
-    .dropdown-content {
-        min-width: 90%;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-}
-
-/* ASSINATURA */
-.dev-credit {
-    position: fixed;
-    bottom: 8px;
-    right: 12px;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    color: #00ff66;
-    opacity: 0.45;
-    z-index: 3;
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="fx"></canvas>
+<canvas id="rain"></canvas>
 
 <div class="container">
-    <h1>Família Unlocker</h1>
-    <p>ROMs • UNISOC • OTA • Segurança Android</p>
 
-    <div class="dropdown">
-        <a class="btn" id="romsBtn">📂 ROMs</a>
-        <div class="dropdown-content" id="romsMenu">
-            <a href="unisoс.html">UNISOC</a>
-            <a href="qualcomm.html">QUALCOMM</a>
-            <a href="mediatek.html">MEDIATEK</a>
-        </div>
+    <h1>Família Unlocker</h1>
+
+    <div class="subtitle">
+        ROMs • UNISOC • OTA • Segurança Android
     </div>
 
-    <a href="#" class="btn">🔄 Atualizações BETA</a>
+    <div class="circle-btn">
+        📂<br>ROMs
+    </div>
+
+    <a href="#" class="big-btn">
+        🔄 Atualizações BETA
+    </a>
+
 </div>
 
-<div class="dev-credit">root@familia-unlocker:~# GSM_MESTRE</div>
-
 <script>
-const canvas = document.getElementById("fx");
+const canvas = document.getElementById("rain");
 const ctx = canvas.getContext("2d");
 
 function resize() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 }
-resize();
 window.addEventListener("resize", resize);
+resize();
 
-/* CHUVA */
 let drops = [];
-for (let i = 0; i < 280; i++) {
+for (let i = 0; i < 140; i++) {
     drops.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        speed: 6 + Math.random() * 6,
-        length: 14 + Math.random() * 20
+        speed: 4 + Math.random() * 5
     });
 }
 
-function rain() {
+function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = "rgba(0,255,100,0.8)";
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = "#00ff66";
+    ctx.lineWidth = 2;
 
-    for (let d of drops) {
+    drops.forEach(d => {
         ctx.beginPath();
         ctx.moveTo(d.x, d.y);
-        ctx.lineTo(d.x, d.y + d.length);
+        ctx.lineTo(d.x, d.y + 14);
         ctx.stroke();
 
         d.y += d.speed;
         if (d.y > canvas.height) {
-            d.y = -30;
+            d.y = -20;
             d.x = Math.random() * canvas.width;
         }
-    }
+    });
+
+    requestAnimationFrame(draw);
 }
-
-function animate() {
-    rain();
-    requestAnimationFrame(animate);
-}
-animate();
-
-/* MENU */
-const romsBtn = document.getElementById("romsBtn");
-const romsMenu = document.getElementById("romsMenu");
-
-romsBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    romsMenu.style.display =
-        romsMenu.style.display === "block" ? "none" : "block";
-});
-
-document.addEventListener("click", () => {
-    romsMenu.style.display = "none";
-});
+draw();
 </script>
 
 </body>
