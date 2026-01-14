@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- VIEWPORT AJUSTADO (ZOOM CONFORTÁVEL NO CELULAR) -->
-<meta name="viewport" content="width=device-width, initial-scale=1.25, maximum-scale=3.0, user-scalable=yes">
+<!-- VIEWPORT AJUSTADO (ZOOM MAIS SUAVE NO CELULAR) -->
+<meta name="viewport" content="width=device-width, initial-scale=1.20, maximum-scale=3.0, user-scalable=yes">
 
 <title>Família Unlocker - Área Técnica</title>
 
@@ -44,10 +44,10 @@ body {
     padding: 0 15px;
 }
 
-/* ZOOM SUAVE NO CELULAR */
+/* ZOOM LEVE NO CELULAR */
 @media (max-width: 768px) {
     .container {
-        transform: translateY(-50%) scale(1.15);
+        transform: translateY(-50%) scale(1.10);
     }
 
     body {
@@ -138,8 +138,8 @@ p {
         width: 90%;
         max-width: 340px;
         font-size: 16px;
-        padding: 15px 0;
-        margin: 11px auto;
+        padding: 14px 0;
+        margin: 10px auto;
         display: block;
     }
 
@@ -211,12 +211,12 @@ window.addEventListener("resize", resize);
 
 /* CHUVA */
 let drops = [];
-for (let i = 0; i < 320; i++) {
+for (let i = 0; i < 300; i++) {
     drops.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        speed: 6 + Math.random() * 7,
-        length: 15 + Math.random() * 22
+        speed: 6 + Math.random() * 6,
+        length: 14 + Math.random() * 20
     });
 }
 
@@ -241,12 +241,12 @@ function rain() {
 
 /* RELÂMPAGO */
 function lightning() {
-    ctx.fillStyle = "rgba(0,255,100,0.12)";
+    ctx.fillStyle = "rgba(0,255,100,0.10)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 setInterval(() => {
-    if (Math.random() < 0.12) lightning();
+    if (Math.random() < 0.10) lightning();
 }, 500);
 
 function animate() {
