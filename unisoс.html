@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>REALME UNISOC / SPREADTRUM | Família Unlocker</title>
@@ -14,8 +13,8 @@ html, body {
     width: 100%;
     min-height: 100%;
     background: black;
-    overflow-x: hidden;   /* trava lateral */
-    overflow-y: auto;     /* LIBERA ROLAGEM */
+    overflow-x: hidden;
+    overflow-y: auto;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -35,7 +34,7 @@ html, body {
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: 80px 20px 120px; /* espaço embaixo pro último botão */
+    padding: 80px 20px 120px;
     color: #00ff66;
 }
 
@@ -91,6 +90,52 @@ p {
     color: #00ff66;
     text-decoration: none;
     font-size: 14px;
+}
+
+/* ===== CURSOR ICE MAIS TRANSPARENTE + MAIS BRILHO ===== */
+#ice-cursor {
+    position: fixed;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle at top left,
+        rgba(230,250,255,0.9),
+        rgba(120,210,255,0.45),
+        rgba(30,160,255,0.15)
+    );
+    box-shadow:
+        0 0 20px rgba(160,230,255,0.9),
+        0 0 45px rgba(120,200,255,0.8),
+        0 0 70px rgba(80,180,255,0.6);
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.ice-trail {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: radial-gradient(circle,
+        rgba(200,245,255,0.9),
+        rgba(120,220,255,0.5),
+        rgba(0,150,255,0.15)
+    );
+    box-shadow:
+        0 0 25px rgba(170,235,255,1),
+        0 0 60px rgba(120,210,255,0.9);
+    z-index: 9998;
+    animation: iceFade 0.8s linear forwards;
+}
+
+@keyframes iceFade {
+    to {
+        opacity: 0;
+        transform: scale(0.2);
+        filter: blur(2px);
+    }
 }
 </style>
 </head>
@@ -168,6 +213,24 @@ function animate() {
     requestAnimationFrame(animate);
 }
 animate();
+
+/* CURSOR ICE */
+const iceCursor = document.createElement("div");
+iceCursor.id = "ice-cursor";
+document.body.appendChild(iceCursor);
+
+document.addEventListener("mousemove", e => {
+    iceCursor.style.left = e.clientX + "px";
+    iceCursor.style.top = e.clientY + "px";
+
+    const trail = document.createElement("div");
+    trail.className = "ice-trail";
+    trail.style.left = e.clientX + "px";
+    trail.style.top = e.clientY + "px";
+    document.body.appendChild(trail);
+
+    setTimeout(() => trail.remove(), 800);
+});
 </script>
 
 </body>
