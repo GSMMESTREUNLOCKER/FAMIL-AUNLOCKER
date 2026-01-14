@@ -107,6 +107,7 @@ p {
 /* BLOQUEADOS */
 .beta {
     cursor: not-allowed;
+    opacity: 0.6;
 }
 
 /* ASSINATURA */
@@ -167,7 +168,7 @@ p {
     height: 28px;
 }
 
-/* ===== EFEITO HACKER OEM (MOUSE) ===== */
+/* CURSOR HACKER */
 #hacker-cursor {
     position: fixed;
     width: 14px;
@@ -175,7 +176,7 @@ p {
     border-radius: 50%;
     pointer-events: none;
     background: rgba(0,255,100,0.9);
-    box-shadow: 0 0 12px #00ff66, 0 0 24px rgba(0,255,100,0.6);
+    box-shadow: 0 0 12px #00ff66;
     transform: translate(-50%, -50%);
     z-index: 9999;
 }
@@ -219,6 +220,9 @@ p {
     </div>
 
     <span class="btn beta">🔄 Atualizações BETA</span>
+
+    <!-- NOVO ÍCONE -->
+    <a href="alugueis-tools.html" class="btn">🛠️ ALUGUÉIS DE TOOLS</a>
 </div>
 
 <div class="dev-credit">root@familia-unlocker:~# GSM_MESTRE</div>
@@ -241,7 +245,6 @@ function resize() {
 resize();
 window.addEventListener("resize", resize);
 
-/* CHUVA */
 let drops = [];
 for (let i = 0; i < 350; i++) {
     drops.push({
@@ -276,21 +279,19 @@ function animate() {
 }
 animate();
 
-/* MENU ROMs */
 const romsBtn = document.getElementById("romsBtn");
 const romsMenu = document.getElementById("romsMenu");
 
-romsBtn.addEventListener("click", function (e) {
+romsBtn.addEventListener("click", e => {
     e.stopPropagation();
     romsMenu.style.display =
         romsMenu.style.display === "block" ? "none" : "block";
 });
 
-document.addEventListener("click", function () {
+document.addEventListener("click", () => {
     romsMenu.style.display = "none";
 });
 
-/* ===== CURSOR HACKER OEM ===== */
 const hackerCursor = document.createElement("div");
 hackerCursor.id = "hacker-cursor";
 document.body.appendChild(hackerCursor);
