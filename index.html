@@ -2,9 +2,11 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Família Unlocker</title>
 
+<!-- RESPONSIVO (OBRIGATÓRIO) -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Família Unlocker - Área Técnica</title>
 
 <style>
 * {
@@ -14,91 +16,156 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
+body {
     background: black;
+    color: #00ff66;
+    height: 100vh;
     overflow: hidden;
 }
 
-/* CANVAS */
-#rain {
+/* CANVAS DA CHUVA */
+#fx {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: 0;
+    pointer-events: none;
 }
 
-/* ===== DESKTOP (PADRÃO) ===== */
+/* CONTEÚDO */
 .container {
     position: relative;
     z-index: 2;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* <<< PC NORMAL */
+    top: 50%;
+    transform: translateY(-50%);
     text-align: center;
-    color: #00ff66;
-    padding: 20px;
+    padding: 0 15px;
 }
 
 /* TÍTULO */
 h1 {
     font-size: 48px;
-    margin-bottom: 10px;
-    text-shadow: 0 0 22px #00ff66;
+    color: #00ff66;
+    text-shadow: 0 0 25px #00ff66;
+    margin-bottom: 15px;
 }
 
 /* SUB */
-.subtitle {
-    font-size: 18px;
-    opacity: 0.85;
-    margin-bottom: 40px;
-}
-
-/* BOTÃO ROMs */
-.circle-btn {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: #00ff66;
-    color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    font-weight: bold;
+p {
+    color: #ccc;
     margin-bottom: 30px;
-    box-shadow: 0 0 30px #00ff66;
+    font-size: 18px;
 }
 
-/* BOTÃO BETA */
-.big-btn {
-    padding: 18px 50px;
-    border-radius: 50px;
+/* BOTÕES */
+.btn {
+    display: inline-block;
+    margin: 12px;
+    padding: 14px 40px;
     background: #00ff66;
     color: black;
     font-size: 18px;
-    font-weight: bold;
+    border-radius: 30px;
     text-decoration: none;
-    box-shadow: 0 0 30px #00ff66;
+    font-weight: bold;
+    box-shadow: 0 0 25px #00ff66;
+    transition: 0.3s;
+    cursor: pointer;
+
+    /* MOBILE UX */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
-/* ===== MOBILE (AJUSTE FINO) ===== */
+.btn:hover {
+    background: #00cc55;
+    box-shadow: 0 0 40px #00ff66;
+}
+
+/* DROPDOWN ROMs */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.95);
+    min-width: 220px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px #00ff66;
+    margin-top: 12px;
+    z-index: 999;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 14px;
+    color: #00ff66;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(0,255,100,0.2);
+}
+
+.dropdown-content a:hover {
+    background: rgba(0,255,100,0.15);
+}
+
+/* CRÉDITO DESENVOLVEDOR */
+.dev-credit {
+    position: fixed;
+    bottom: 8px;
+    right: 12px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #00ff66;
+    opacity: 0.45;
+    z-index: 3;
+    user-select: none;
+}
+
+/* =========================
+   RESPONSIVO (CELULAR)
+   ========================= */
 @media (max-width: 768px) {
 
-    .container {
-        justify-content: flex-start;
-        padding-top: 90px; /* <<< IGUAL AO PRINT */
+    h1 {
+        font-size: 34px;
     }
+
+    p {
+        font-size: 15px;
+        margin-bottom: 24px;
+    }
+
+    .btn {
+        width: 85%;
+        max-width: 320px;
+        font-size: 16px;
+        padding: 14px 0;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .dropdown-content {
+        min-width: 85%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* TELAS MUITO PEQUENAS */
+@media (max-width: 380px) {
 
     h1 {
-        font-size: 36px;
+        font-size: 28px;
     }
 
-    .subtitle {
+    .btn {
         font-size: 15px;
-        margin-bottom: 30px;
     }
 }
 </style>
@@ -106,64 +173,113 @@ h1 {
 
 <body>
 
-<canvas id="rain"></canvas>
+<!-- CANVAS -->
+<canvas id="fx"></canvas>
 
+<!-- CONTEÚDO -->
 <div class="container">
-
     <h1>Família Unlocker</h1>
+    <p>ROMs • UNISOC • OTA • Segurança Android</p>
 
-    <div class="subtitle">
-        ROMs • UNISOC • OTA • Segurança Android
+    <div class="dropdown">
+        <a class="btn" id="romsBtn">📂 ROMs</a>
+        <div class="dropdown-content" id="romsMenu">
+            <a href="unisoс.html">UNISOC</a>
+            <a href="qualcomm.html">QUALCOMM</a>
+            <a href="mediatek.html">MEDIATEK</a>
+        </div>
     </div>
 
-    <div class="circle-btn">
-        📂<br>ROMs
-    </div>
-
-    <a href="#" class="big-btn">
-        🔄 Atualizações BETA
-    </a>
-
+    <a href="#" class="btn">🔄 Atualizações BETA</a>
 </div>
 
+<!-- ASSINATURA -->
+<div class="dev-credit">root@familia-unlocker:~# GSM_MESTRE</div>
+
 <script>
-const canvas = document.getElementById("rain");
+const canvas = document.getElementById("fx");
 const ctx = canvas.getContext("2d");
 
 function resize() {
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 }
 resize();
-addEventListener("resize", resize);
+window.addEventListener("resize", resize);
 
-let drops = Array.from({length: 160}, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    speed: 4 + Math.random() * 5
-}));
+/* CHUVA */
+let drops = [];
+for (let i = 0; i < 350; i++) {
+    drops.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        speed: 6 + Math.random() * 8,
+        length: 15 + Math.random() * 25
+    });
+}
 
-function animate() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.strokeStyle = "#00ff66";
-    ctx.lineWidth = 2;
+function rain() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = "rgba(0,255,100,0.8)";
+    ctx.lineWidth = 1;
 
-    drops.forEach(d => {
+    for (let d of drops) {
         ctx.beginPath();
         ctx.moveTo(d.x, d.y);
-        ctx.lineTo(d.x, d.y + 15);
+        ctx.lineTo(d.x, d.y + d.length);
         ctx.stroke();
 
         d.y += d.speed;
         if (d.y > canvas.height) {
-            d.y = -20;
+            d.y = -30;
             d.x = Math.random() * canvas.width;
         }
-    });
+    }
+}
 
+/* RELÂMPAGO */
+function lightning() {
+    ctx.fillStyle = "rgba(0,255,100,0.15)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+setInterval(() => {
+    if (Math.random() < 0.12) lightning();
+}, 500);
+
+function animate() {
+    rain();
     requestAnimationFrame(animate);
 }
 animate();
+
+/* MENU ROMs */
+const romsBtn = document.getElementById("romsBtn");
+const romsMenu = document.getElementById("romsMenu");
+
+romsBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    romsMenu.style.display =
+        romsMenu.style.display === "block" ? "none" : "block";
+});
+
+document.addEventListener("click", () => {
+    romsMenu.style.display = "none";
+});
+
+/* ASSINATURA CONSOLE */
+console.log(
+"%croot@familia-unlocker:~# acesso autorizado\n%cGSM MESTRE UNLOCKER | UNISOC • OTA • ANDROID SECURITY",
+"color:#00ff66;font-size:14px;font-weight:bold;",
+"color:#888;font-size:12px;"
+);
+
+/* EASTER EGG */
+document.addEventListener("keydown", function(e) {
+    if (e.ctrlKey && e.altKey && e.key.toLowerCase() === "g") {
+        alert("ACCESS GRANTED\nGSM MESTRE UNLOCKER\nFamília Unlocker");
+    }
+});
 </script>
 
 </body>
