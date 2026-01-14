@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 
-<!-- RESPONSIVO (OBRIGATÓRIO) -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- VIEWPORT COM ZOOM MELHORADO -->
+<meta name="viewport" content="width=device-width, initial-scale=1.15, maximum-scale=2.5">
 
 <title>Família Unlocker - Área Técnica</title>
 
@@ -21,6 +21,13 @@ body {
     color: #00ff66;
     height: 100vh;
     overflow: hidden;
+}
+
+/* ZOOM EXTRA SOMENTE NO CELULAR */
+@media (max-width: 768px) {
+    body {
+        zoom: 1.1;
+    }
 }
 
 /* CANVAS DA CHUVA */
@@ -42,6 +49,13 @@ body {
     transform: translateY(-50%);
     text-align: center;
     padding: 0 15px;
+}
+
+/* AJUSTE FINO NO MOBILE */
+@media (max-width: 768px) {
+    .container {
+        top: 45%;
+    }
 }
 
 /* TÍTULO */
@@ -73,8 +87,6 @@ p {
     box-shadow: 0 0 25px #00ff66;
     transition: 0.3s;
     cursor: pointer;
-
-    /* MOBILE UX */
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
 }
@@ -84,7 +96,7 @@ p {
     box-shadow: 0 0 40px #00ff66;
 }
 
-/* DROPDOWN ROMs */
+/* DROPDOWN */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -114,24 +126,8 @@ p {
     background: rgba(0,255,100,0.15);
 }
 
-/* CRÉDITO DESENVOLVEDOR */
-.dev-credit {
-    position: fixed;
-    bottom: 8px;
-    right: 12px;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    color: #00ff66;
-    opacity: 0.45;
-    z-index: 3;
-    user-select: none;
-}
-
-/* =========================
-   RESPONSIVO (CELULAR)
-   ========================= */
+/* RESPONSIVO */
 @media (max-width: 768px) {
-
     h1 {
         font-size: 34px;
     }
@@ -159,7 +155,6 @@ p {
 
 /* TELAS MUITO PEQUENAS */
 @media (max-width: 380px) {
-
     h1 {
         font-size: 28px;
     }
@@ -168,15 +163,26 @@ p {
         font-size: 15px;
     }
 }
+
+/* ASSINATURA */
+.dev-credit {
+    position: fixed;
+    bottom: 8px;
+    right: 12px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #00ff66;
+    opacity: 0.45;
+    z-index: 3;
+    user-select: none;
+}
 </style>
 </head>
 
 <body>
 
-<!-- CANVAS -->
 <canvas id="fx"></canvas>
 
-<!-- CONTEÚDO -->
 <div class="container">
     <h1>Família Unlocker</h1>
     <p>ROMs • UNISOC • OTA • Segurança Android</p>
@@ -193,7 +199,6 @@ p {
     <a href="#" class="btn">🔄 Atualizações BETA</a>
 </div>
 
-<!-- ASSINATURA -->
 <div class="dev-credit">root@familia-unlocker:~# GSM_MESTRE</div>
 
 <script>
@@ -253,7 +258,7 @@ function animate() {
 }
 animate();
 
-/* MENU ROMs */
+/* MENU */
 const romsBtn = document.getElementById("romsBtn");
 const romsMenu = document.getElementById("romsMenu");
 
@@ -267,7 +272,7 @@ document.addEventListener("click", () => {
     romsMenu.style.display = "none";
 });
 
-/* ASSINATURA CONSOLE */
+/* CONSOLE */
 console.log(
 "%croot@familia-unlocker:~# acesso autorizado\n%cGSM MESTRE UNLOCKER | UNISOC • OTA • ANDROID SECURITY",
 "color:#00ff66;font-size:14px;font-weight:bold;",
