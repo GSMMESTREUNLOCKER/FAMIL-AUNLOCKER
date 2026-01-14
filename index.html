@@ -2,6 +2,10 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+
+<!-- RESPONSIVO (OBRIGATÓRIO) -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Família Unlocker - Área Técnica</title>
 
 <style>
@@ -37,6 +41,7 @@ body {
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
+    padding: 0 15px;
 }
 
 /* TÍTULO */
@@ -68,6 +73,10 @@ p {
     box-shadow: 0 0 25px #00ff66;
     transition: 0.3s;
     cursor: pointer;
+
+    /* MOBILE UX */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .btn:hover {
@@ -105,7 +114,7 @@ p {
     background: rgba(0,255,100,0.15);
 }
 
-/* CRÉDITO DESENVOLVEDOR - HACKER DISCRETO */
+/* CRÉDITO DESENVOLVEDOR */
 .dev-credit {
     position: fixed;
     bottom: 8px;
@@ -116,6 +125,48 @@ p {
     opacity: 0.45;
     z-index: 3;
     user-select: none;
+}
+
+/* =========================
+   RESPONSIVO (CELULAR)
+   ========================= */
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 34px;
+    }
+
+    p {
+        font-size: 15px;
+        margin-bottom: 24px;
+    }
+
+    .btn {
+        width: 85%;
+        max-width: 320px;
+        font-size: 16px;
+        padding: 14px 0;
+        margin: 10px auto;
+        display: block;
+    }
+
+    .dropdown-content {
+        min-width: 85%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* TELAS MUITO PEQUENAS */
+@media (max-width: 380px) {
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .btn {
+        font-size: 15px;
+    }
 }
 </style>
 </head>
@@ -139,10 +190,10 @@ p {
         </div>
     </div>
 
-    <a href="#" class="btn">🔐 Área Técnica</a>
+    <a href="#" class="btn">🔄 Atualizações BETA</a>
 </div>
 
-<!-- ASSINATURA HACKER -->
+<!-- ASSINATURA -->
 <div class="dev-credit">root@familia-unlocker:~# GSM_MESTRE</div>
 
 <script>
@@ -216,14 +267,14 @@ document.addEventListener("click", () => {
     romsMenu.style.display = "none";
 });
 
-/* ===== ASSINATURA HACKER INVISÍVEL ===== */
+/* ASSINATURA CONSOLE */
 console.log(
 "%croot@familia-unlocker:~# acesso autorizado\n%cGSM MESTRE UNLOCKER | UNISOC • OTA • ANDROID SECURITY",
 "color:#00ff66;font-size:14px;font-weight:bold;",
 "color:#888;font-size:12px;"
 );
 
-/* ===== EASTER EGG SECRETO ===== */
+/* EASTER EGG */
 document.addEventListener("keydown", function(e) {
     if (e.ctrlKey && e.altKey && e.key.toLowerCase() === "g") {
         alert("ACCESS GRANTED\nGSM MESTRE UNLOCKER\nFamília Unlocker");
