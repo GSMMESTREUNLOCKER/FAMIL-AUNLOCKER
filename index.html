@@ -95,7 +95,8 @@ p {
     z-index: 999;
 }
 
-.dropdown-content a {
+.dropdown-content a,
+.dropdown-content span {
     display: block;
     padding: 14px;
     color: #00ff66;
@@ -103,8 +104,9 @@ p {
     font-weight: bold;
 }
 
-.dropdown-content a:hover {
-    background: rgba(0,255,100,0.15);
+/* BLOQUEADOS */
+.beta {
+    cursor: not-allowed;
 }
 
 /* ASSINATURA */
@@ -118,7 +120,7 @@ p {
     z-index: 3;
 }
 
-/* WHATSAPP SANGUE */
+/* WHATSAPP */
 .whatsapp-link {
     position: fixed;
     bottom: 12px;
@@ -134,19 +136,15 @@ p {
     box-shadow: 0 0 20px rgba(255,0,0,0.6);
 }
 
-/* TEXTO SANGUE */
 .blood-text {
     color: #ff0000;
     font-weight: bold;
     font-size: 13px;
     letter-spacing: 1px;
     position: relative;
-    text-shadow:
-        0 0 6px #ff0000,
-        0 0 12px #990000;
+    text-shadow: 0 0 6px #ff0000, 0 0 12px #990000;
 }
 
-/* EFEITO DERRETENDO */
 .blood-text::after {
     content: "";
     position: absolute;
@@ -183,21 +181,20 @@ p {
         <button class="btn" id="romsBtn" type="button">📂 ROMs</button>
         <div class="dropdown-content" id="romsMenu">
             <a href="unisoс.html">UNISOC</a>
-            <a href="qualcomm.html">QUALCOMM</a>
-            <a href="mediatek.html">MEDIATEK</a>
+            <span class="beta">QUALCOMM BETA</span>
+            <span class="beta">MEDIATEK BETA</span>
         </div>
     </div>
 
-    <a href="#" class="btn">🔄 Atualizações BETA</a>
+    <!-- ATUALIZAÇÕES BETA BLOQUEADO -->
+    <span class="btn beta">🔄 Atualizações BETA</span>
 </div>
 
 <div class="dev-credit">root@familia-unlocker:~# GSM_MESTRE</div>
 
-<!-- WHATSAPP -->
 <a href="https://chat.whatsapp.com/B7ZnnZNXxjOASMdznPyrx8"
    class="whatsapp-link"
-   target="_blank"
-   title="Suporte / Comunidade">
+   target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
     <span class="blood-text">SUPORTE / COMUNIDADE</span>
 </a>
@@ -248,7 +245,7 @@ function animate() {
 }
 animate();
 
-/* MENU ROMs - FUNCIONAL */
+/* MENU ROMs */
 const romsBtn = document.getElementById("romsBtn");
 const romsMenu = document.getElementById("romsMenu");
 
