@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>REALME UNISOC / SPREADTRUM | Família Unlocker</title>
 
 <style>
@@ -27,29 +26,18 @@ html, body {
     pointer-events: none;
 }
 
-/* CENTRALIZAÇÃO TOTAL */
-.wrapper {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
 /* CONTEÚDO */
 .container {
-    width: 100%;
-    max-width: 420px;
-    padding: 20px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 80px;
     color: #00ff66;
 }
 
 /* TÍTULO */
 h1 {
-    font-size: 36px;
+    font-size: 42px;
     text-shadow: 0 0 25px #00ff66;
     margin-bottom: 10px;
 }
@@ -57,8 +45,8 @@ h1 {
 /* SUBTÍTULO */
 p {
     color: #ccc;
-    margin-bottom: 35px;
-    font-size: 15px;
+    margin-bottom: 40px;
+    font-size: 16px;
 }
 
 /* LINKS */
@@ -66,47 +54,38 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 18px;
+    gap: 20px;
 }
 
-/* BOTÃO */
+/* BOTÕES (CINZA TRANSPARENTE) */
 .btn {
-    width: 100%;
-    max-width: 320px;
+    width: 320px;
     padding: 16px;
-    background: #00ff66;
-    color: black;
-    font-size: 16px;
+    background: rgba(160, 160, 160, 0.30);
+    color: #ffffff;
+    font-size: 17px;
     border-radius: 30px;
     text-decoration: none;
     font-weight: bold;
-    box-shadow: 0 0 25px #00ff66;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     transition: 0.3s;
 }
 
 .btn:hover {
-    background: #00cc55;
-    box-shadow: 0 0 40px #00ff66;
+    background: rgba(190, 190, 190, 0.45);
+    box-shadow: 0 0 35px rgba(255, 255, 255, 0.40);
 }
 
 /* VOLTAR */
 .back {
     display: block;
-    margin-top: 35px;
+    margin-top: 50px;
     color: #00ff66;
     text-decoration: none;
     font-size: 14px;
-}
-
-/* AJUSTES MOBILE */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 28px;
-    }
-
-    p {
-        font-size: 14px;
-    }
 }
 </style>
 </head>
@@ -115,47 +94,22 @@ p {
 
 <canvas id="iceRain"></canvas>
 
-<div class="wrapper">
-    <div class="container">
-        <h1>REALME UNISOC / SPREADTRUM</h1>
-        <p>ROMs • Flash • Arquivos técnicos</p>
+<div class="container">
+    <h1>REALME UNISOC / SPREADTRUM</h1>
+    <p>ROMs • Flash • Arquivos técnicos</p>
 
-        <div class="links">
-            <a class="btn" href="https://drive.google.com/file/d/1fX_2vEuNz0fh6ErQBKO9ZhRE4VECxWh2/view?usp=drive_link" target="_blank">
-                📥 Flash Realme C61
-            </a>
-
-            <a class="btn" href="https://drive.google.com/file/d/1f3bulR2s6h6zTKaeIwXcAZE7h2GPPYuI/view?usp=sharing" target="_blank">
-                📥 Flash Realme Note 60X
-            </a>
-
-            <a class="btn" href="https://drive.google.com/file/d/1I9btrFz4CH5LpLb3-W9oNwU7c5fcfKft/view?usp=sharing" target="_blank">
-                📥 Flash Realme Note 60
-            </a>
-
-            <a class="btn" href="https://drive.google.com/file/d/17j0BB5dSiWxMNICT9TzUjLJTbtLFwyyj/view?usp=sharing" target="_blank">
-                📥 Flash Realme C63
-            </a>
-
-            <a class="btn" href="https://drive.google.com/file/d/1ONXtwrHqSVKVAxEGS6MNwSTQRw3avACn/view?usp=sharing" target="_blank">
-                📥 DUMP NOTE 70 MDM GRÁTIS
-            </a>
-
-            <a class="btn" href="https://drive.google.com/file/d/1dSfHUu62A3EAxVy7zEvi3xbJ-ZP0lprL/view?usp=sharing" target="_blank">
-                📥 Flash Realme C71
-            </a>
-
-            <a class="btn" href="https://drive.google.com/file/d/1Q57zwQ48oZsy2M8rCWfXO7vK4c_59PpX/view?usp=sharing" target="_blank">
-                📥 Flash Realme C53
-            </a>
-
-            <a class="btn" href="https://drive.google.com/file/d/1ZqlKmxxGqCu9_d1aXrSeQvgXykt_gZhu/view?usp=sharing" target="_blank">
-                📥 Flash Realme Note 50
-            </a>
-        </div>
-
-        <a class="back" href="index.html">⬅ Voltar</a>
+    <div class="links">
+        <a class="btn" href="https://drive.google.com/file/d/1fX_2vEuNz0fh6ErQBKO9ZhRE4VECxWh2/view?usp=drive_link" target="_blank">📥 Flash Realme C61</a>
+        <a class="btn" href="https://drive.google.com/file/d/1f3bulR2s6h6zTKaeIwXcAZE7h2GPPYuI/view?usp=sharing" target="_blank">📥 Flash Realme Note 60X</a>
+        <a class="btn" href="https://drive.google.com/file/d/1I9btrFz4CH5LpLb3-W9oNwU7c5fcfKft/view?usp=sharing" target="_blank">📥 Flash Realme Note 60</a>
+        <a class="btn" href="https://drive.google.com/file/d/17j0BB5dSiWxMNICT9TzUjLJTbtLFwyyj/view?usp=sharing" target="_blank">📥 Flash Realme C63</a>
+        <a class="btn" href="https://drive.google.com/file/d/1ONXtwrHqSVKVAxEGS6MNwSTQRw3avACn/view?usp=sharing" target="_blank">📥 DUMP NOTE 70 MDM GRATIS</a>
+        <a class="btn" href="https://drive.google.com/file/d/1dSfHUu62A3EAxVy7zEvi3xbJ-ZP0lprL/view?usp=sharing" target="_blank">📥 Flash Realme C71</a>
+        <a class="btn" href="https://drive.google.com/file/d/1Q57zwQ48oZsy2M8rCWfXO7vK4c_59PpX/view?usp=sharing" target="_blank">📥 Flash Realme C53</a>
+        <a class="btn" href="https://drive.google.com/file/d/1ZqlKmxxGqCu9_d1aXrSeQvgXykt_gZhu/view?usp=sharing" target="_blank">📥 Flash Realme Note 50</a>
     </div>
+
+    <a class="back" href="index.html">⬅ Voltar</a>
 </div>
 
 <script>
@@ -169,13 +123,11 @@ function resize() {
 resize();
 window.addEventListener("resize", resize);
 
-/* CHUVA DE CRISTAL */
 let crystals = [];
 const total = 160;
 
 class Crystal {
     constructor() { this.reset(); }
-
     reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
@@ -183,7 +135,6 @@ class Crystal {
         this.speed = Math.random() * 2 + 1;
         this.alpha = Math.random() * 0.6 + 0.4;
     }
-
     draw() {
         ctx.beginPath();
         ctx.strokeStyle = `rgba(160,220,255,${this.alpha})`;
@@ -194,7 +145,6 @@ class Crystal {
         ctx.lineTo(this.x + this.size, this.y + this.size * 4);
         ctx.stroke();
     }
-
     update() {
         this.y += this.speed;
         if (this.y > canvas.height) {
@@ -205,9 +155,7 @@ class Crystal {
     }
 }
 
-for (let i = 0; i < total; i++) {
-    crystals.push(new Crystal());
-}
+for (let i = 0; i < total; i++) crystals.push(new Crystal());
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
