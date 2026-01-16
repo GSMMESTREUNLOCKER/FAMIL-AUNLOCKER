@@ -182,8 +182,7 @@ p {
         <div class="btn" onclick="openPassword('c75')">📱 REALME FLASH C75</div>
         <div class="btn" onclick="openPassword('c65')">📱 REALME FLASH C65</div>
         <div class="btn" onclick="openPassword('c75x')">📱 REALME FLASH C75X</div>
-        <a class="btn" href="c55/index.html">📱 REALME FLASH C55</a>
-        <a class="btn" href="c53/index.html">📱 REALME FLASH C53</a>
+        <div class="btn" onclick="openPassword('c55')">📱 REALME FLASH C55</div>
     </div>
 
     <a class="back" href="../index.html">⬅ Voltar para o início</a>
@@ -204,100 +203,115 @@ p {
 
 <script>
 /* ICE */
-const canvas=document.getElementById("iceRain");
-const ctx=canvas.getContext("2d");
-function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
-resize();addEventListener("resize",resize);
-let drops=[];
-for(let i=0;i<140;i++)drops.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,speed:Math.random()*2+1,size:Math.random()*2+1});
+const canvas = document.getElementById("iceRain");
+const ctx = canvas.getContext("2d");
+function resize(){
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+}
+resize();
+addEventListener("resize", resize);
+
+let drops = [];
+for(let i=0;i<140;i++){
+    drops.push({
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        speed: Math.random()*2+1,
+        size: Math.random()*2+1
+    });
+}
+
 function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.strokeStyle="rgba(160,220,255,0.7)";
-drops.forEach(d=>{
-ctx.beginPath();
-ctx.moveTo(d.x,d.y);
-ctx.lineTo(d.x,d.y+d.size*6);
-ctx.stroke();
-d.y+=d.speed;
-if(d.y>canvas.height){d.y=0;d.x=Math.random()*canvas.width;}
-});
-requestAnimationFrame(animate);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.strokeStyle="rgba(160,220,255,0.7)";
+    drops.forEach(d=>{
+        ctx.beginPath();
+        ctx.moveTo(d.x,d.y);
+        ctx.lineTo(d.x,d.y+d.size*6);
+        ctx.stroke();
+        d.y += d.speed;
+        if(d.y > canvas.height){
+            d.y = 0;
+            d.x = Math.random()*canvas.width;
+        }
+    });
+    requestAnimationFrame(animate);
 }
 animate();
 
 /* PASSWORD */
-let attempts=0;
-let targetLink="";
+let attempts = 0;
+let targetLink = "";
 
 function openPassword(model){
-attempts=0;
-document.getElementById("passInput").value="";
-document.getElementById("passInput").disabled=false;
-document.getElementById("error").style.display="none";
-document.getElementById("blocked").style.display="none";
-document.getElementById("success").style.display="none";
+    attempts = 0;
+    passInput.value = "";
+    passInput.disabled = false;
+    error.style.display = "none";
+    blocked.style.display = "none";
+    success.style.display = "none";
 
-if(model==="c75"){
-targetLink="https://rms01.realme.net/sw/RMX3941export_11_14.1.0.287EX01_2025012117480000.zip";
-}else if(model==="c65"){
-targetLink="https://drive.google.com/file/d/1zweIY8F2SzkbfMGX7rilnIJFo8M5w3Al/view";
-}else if(model==="c75x"){
-targetLink="https://rms01.realme.net/sw/RMX5020export_11_15.0.0.750EX01_2025051614460000.zip";
-}
+    if(model === "c75"){
+        targetLink = "https://rms01.realme.net/sw/RMX3941export_11_14.1.0.287EX01_2025012117480000.zip";
+    } else if(model === "c65"){
+        targetLink = "https://drive.google.com/file/d/1zweIY8F2SzkbfMGX7rilnIJFo8M5w3Al/view";
+    } else if(model === "c75x"){
+        targetLink = "https://rms01.realme.net/sw/RMX5020export_11_15.0.0.750EX01_2025051614460000.zip";
+    } else if(model === "c55"){
+        targetLink = "https://rms01.realme.net/sw/RMX3710export_11_14.0.0.1320EX01_2024120411520000.zip";
+    }
 
-document.getElementById("passwordBox").style.display="flex";
-typeTerminal(model.toUpperCase());
+    passwordBox.style.display = "flex";
+    typeTerminal(model.toUpperCase());
 }
 
 function closePassword(){
-document.getElementById("passwordBox").style.display="none";
+    passwordBox.style.display = "none";
 }
 
 function typeTerminal(model){
-const terminal=document.getElementById("terminal");
-terminal.innerHTML="";
-let lines=[
-"> INIT SECURE ACCESS",
-"> CHECKING DEVICE...",
-"> LOADING MODULE "+model,
-"> AUTH REQUIRED"
-];
-let l=0,c=0;
-(function type(){
-if(l<lines.length){
-if(c<lines[l].length){
-terminal.innerHTML+=lines[l][c++];
-}else{
-terminal.innerHTML+="<br>";
-l++;c=0;
-}
-setTimeout(type,25);
-}
-})();
+    terminal.innerHTML = "";
+    const lines = [
+        "> INIT SECURE ACCESS",
+        "> CHECKING DEVICE...",
+        "> LOADING MODULE " + model,
+        "> AUTH REQUIRED"
+    ];
+    let l=0,c=0;
+    (function type(){
+        if(l < lines.length){
+            if(c < lines[l].length){
+                terminal.innerHTML += lines[l][c++];
+            } else {
+                terminal.innerHTML += "<br>";
+                l++; c=0;
+            }
+            setTimeout(type,25);
+        }
+    })();
 }
 
 function checkPass(){
-const pass=document.getElementById("passInput").value;
-const error=document.getElementById("error");
-const blocked=document.getElementById("blocked");
-const success=document.getElementById("success");
+    const pass = passInput.value;
+    error.style.display = "none";
 
-error.style.display="none";
+    if(attempts >= 3) return;
 
-if(attempts>=3)return;
-
-if(pass==="0666HACKER"){
-success.style.display="block";
-document.getElementById("passInput").disabled=true;
-setTimeout(()=>{window.location.href=targetLink;},1200);
-}else{
-attempts++;
-error.style.display="block";
-if(attempts>=3){
-blocked.style.display="block";
-document.getElementById("passInput").disabled=true;
-}
-}
+    if(pass === "0666HACKER"){
+        success.style.display = "block";
+        passInput.disabled = true;
+        setTimeout(()=>{
+            window.location.href = targetLink;
+        },1200);
+    } else {
+        attempts++;
+        error.style.display = "block";
+        if(attempts >= 3){
+            blocked.style.display = "block";
+            passInput.disabled = true;
+        }
+    }
 }
 </script>
 
