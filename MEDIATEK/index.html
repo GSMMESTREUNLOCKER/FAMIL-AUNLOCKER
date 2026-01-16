@@ -58,8 +58,8 @@ p {
 }
 
 @keyframes blinkBackup {
-    0%   { opacity: 1; }
-    50%  { opacity: 0; }
+    0% { opacity: 1; }
+    50% { opacity: 0; }
     100% { opacity: 1; }
 }
 
@@ -192,24 +192,12 @@ p {
     <h1>REALME • FLASH • ARQUIVOS</h1>
     <p>Área MEDIATEK • Organização por modelo</p>
 
-    <p style="
-        color:#ffcc00;
-        font-size:14px;
-        margin-top:-20px;
-        margin-bottom:30px;
-        text-shadow:0 0 10px rgba(255,204,0,0.6);
-    ">
+    <p style="color:#ffcc00;font-size:14px;margin-top:-20px;margin-bottom:30px;text-shadow:0 0 10px rgba(255,204,0,0.6);">
         <span class="blink-alert">⚠️</span>
         FAÇA BACKUP SEMPRE EM QUALQUER PROCEDIMENTO
     </p>
 
-    <p style="
-        color:#9d9d9d;
-        font-size:13px;
-        margin-top:-15px;
-        margin-bottom:35px;
-        letter-spacing:0.5px;
-    ">
+    <p style="color:#9d9d9d;font-size:13px;margin-top:-15px;margin-bottom:35px;letter-spacing:0.5px;">
         FLASHES DESTINADOS À RECUPERAÇÃO DE SISTEMA BRICKADO,<br>
         RETORNO DE VERSÃO PARA REMOÇÃO DE R-GUARD<br>
         E DESBLOQUEIO DEFINITIVO DE MDM / PAYJOY
@@ -220,17 +208,13 @@ p {
         <div class="btn" onclick="openPassword('c65')">📱 REALME FLASH C65 (RMX3780)</div>
         <div class="btn" onclick="openPassword('c75x')">📱 REALME FLASH C75X (RMX5020)</div>
         <div class="btn" onclick="openPassword('c55')">📱 REALME FLASH C55 (RMX3710)</div>
+
+        <div class="btn" onclick="openPassword('procedimento')">
+            🛠️ REALME MTK • MDM / PAYJOY • PROCEDIMENTO
+        </div>
     </div>
 
     <a class="back" href="../index.html">⬅ Voltar para o início</a>
-
-    <!-- SUPORTE (ÚNICA ALTERAÇÃO) -->
-    <p style="margin-top:25px;font-size:12px;color:#777;">
-        Suporte Técnico • GSM Mestre Unlocker • 
-        <a href="https://wa.me/5569993388320" target="_blank" style="color:#00ff66;text-decoration:none;">
-            WhatsApp
-        </a>
-    </p>
 </div>
 
 <div id="passwordBox">
@@ -257,13 +241,13 @@ function resize(){
 resize();
 addEventListener("resize", resize);
 
-let drops = [];
+let drops=[];
 for(let i=0;i<140;i++){
     drops.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height,
-        speed: Math.random()*2+1,
-        size: Math.random()*2+1
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        speed:Math.random()*2+1,
+        size:Math.random()*2+1
     });
 }
 
@@ -275,86 +259,77 @@ function animate(){
         ctx.moveTo(d.x,d.y);
         ctx.lineTo(d.x,d.y+d.size*6);
         ctx.stroke();
-        d.y += d.speed;
-        if(d.y > canvas.height){
-            d.y = 0;
-            d.x = Math.random()*canvas.width;
+        d.y+=d.speed;
+        if(d.y>canvas.height){
+            d.y=0;
+            d.x=Math.random()*canvas.width;
         }
     });
     requestAnimationFrame(animate);
 }
 animate();
 
+/* ===== DUPLA AUTENTICAÇÃO ===== */
 let attempts = 0;
 let targetLink = "";
+let step = 1;
+
+const PASS1 = "0666HACKER";
+const PASS2 = "GSM-MTK-2026";
 
 function openPassword(model){
     attempts = 0;
+    step = 1;
     passInput.value = "";
     passInput.disabled = false;
     error.style.display = "none";
     blocked.style.display = "none";
     success.style.display = "none";
 
-    if(model === "c75"){
-        targetLink = "https://rms01.realme.net/sw/RMX3941export_11_14.1.0.287EX01_2025012117480000.zip";
-    } else if(model === "c65"){
-        targetLink = "https://drive.google.com/file/d/1zweIY8F2SzkbfMGX7rilnIJFo8M5w3Al/view";
-    } else if(model === "c75x"){
-        targetLink = "https://rms01.realme.net/sw/RMX5020export_11_15.0.0.750EX01_2025051614460000.zip";
-    } else if(model === "c55"){
-        targetLink = "https://rms01.realme.net/sw/RMX3710export_11_14.0.0.1320EX01_2024120411520000.zip";
+    if(model==="c75"){
+        targetLink="https://rms01.realme.net/sw/RMX3941export_11_14.1.0.287EX01_2025012117480000.zip";
+    } else if(model==="c65"){
+        targetLink="https://drive.google.com/file/d/1zweIY8F2SzkbfMGX7rilnIJFo8M5w3Al/view";
+    } else if(model==="c75x"){
+        targetLink="https://rms01.realme.net/sw/RMX5020export_11_15.0.0.750EX01_2025051614460000.zip";
+    } else if(model==="c55"){
+        targetLink="https://rms01.realme.net/sw/RMX3710export_11_14.0.0.1320EX01_2024120411520000.zip";
+    } else if(model==="procedimento"){
+        targetLink="https://www.mediafire.com/file/hjed1r13wrc8yrv/PROCEDIMENTOS_DE_REMO%25C3%2587AO_DE_TODOS_OS_REALME_MTK.rar/file";
     }
 
-    passwordBox.style.display = "flex";
-    typeTerminal(model.toUpperCase());
+    passwordBox.style.display="flex";
+    terminal.innerHTML="> AUTH REQUIRED<br>> ENTER FIRST KEY";
 }
 
 function closePassword(){
-    passwordBox.style.display = "none";
-}
-
-function typeTerminal(model){
-    terminal.innerHTML = "";
-    const lines = [
-        "> INIT SECURE ACCESS",
-        "> CHECKING DEVICE...",
-        "> LOADING MODULE " + model,
-        "> AUTH REQUIRED"
-    ];
-    let l=0,c=0;
-    (function type(){
-        if(l < lines.length){
-            if(c < lines[l].length){
-                terminal.innerHTML += lines[l][c++];
-            } else {
-                terminal.innerHTML += "<br>";
-                l++; c=0;
-            }
-            setTimeout(type,25);
-        }
-    })();
+    passwordBox.style.display="none";
 }
 
 function checkPass(){
-    const pass = passInput.value;
-    error.style.display = "none";
-
     if(attempts >= 3) return;
 
-    if(pass === "0666HACKER"){
-        success.style.display = "block";
+    if(step === 1 && passInput.value === PASS1){
+        step = 2;
+        passInput.value = "";
+        terminal.innerHTML += "<br>> FIRST KEY OK<br>> ENTER SECOND KEY";
+        return;
+    }
+
+    if(step === 2 && passInput.value === PASS2){
+        success.style.display="block";
+        terminal.innerHTML += "<br>> ACCESS GRANTED";
         passInput.disabled = true;
-        setTimeout(()=>{
-            window.location.href = targetLink;
-        },1200);
-    } else {
-        attempts++;
-        error.style.display = "block";
-        if(attempts >= 3){
-            blocked.style.display = "block";
-            passInput.disabled = true;
-        }
+        setTimeout(()=>{ window.location.href = targetLink; },1200);
+        return;
+    }
+
+    attempts++;
+    error.style.display="block";
+
+    if(attempts >= 3){
+        blocked.style.display="block";
+        passInput.disabled = true;
     }
 }
 </script>
