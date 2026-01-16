@@ -51,6 +51,19 @@ p {
     font-size: 16px;
 }
 
+/* AVISO BACKUP */
+.blink-alert {
+    display: inline-block;
+    animation: blinkBackup 1.5s infinite;
+}
+
+@keyframes blinkBackup {
+    0%   { opacity: 1; }
+    50%  { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* LINKS */
 .links {
     display: flex;
     flex-direction: column;
@@ -58,6 +71,7 @@ p {
     gap: 20px;
 }
 
+/* BOTÕES */
 .btn {
     width: 320px;
     padding: 16px;
@@ -178,6 +192,29 @@ p {
     <h1>REALME • FLASH • ARQUIVOS</h1>
     <p>Área MEDIATEK • Organização por modelo</p>
 
+    <p style="
+        color:#ffcc00;
+        font-size:14px;
+        margin-top:-20px;
+        margin-bottom:30px;
+        text-shadow:0 0 10px rgba(255,204,0,0.6);
+    ">
+        <span class="blink-alert">⚠️</span>
+        FAÇA BACKUP SEMPRE EM QUALQUER PROCEDIMENTO
+    </p>
+
+    <p style="
+        color:#9d9d9d;
+        font-size:13px;
+        margin-top:-15px;
+        margin-bottom:35px;
+        letter-spacing:0.5px;
+    ">
+        FLASHES DESTINADOS À RECUPERAÇÃO DE SISTEMA BRICKADO,<br>
+        RETORNO DE VERSÃO PARA REMOÇÃO DE R-GUARD<br>
+        E DESBLOQUEIO DEFINITIVO DE MDM / PAYJOY
+    </p>
+
     <div class="links">
         <div class="btn" onclick="openPassword('c75')">📱 REALME FLASH C75 (RMX3941)</div>
         <div class="btn" onclick="openPassword('c65')">📱 REALME FLASH C65 (RMX3780)</div>
@@ -186,6 +223,14 @@ p {
     </div>
 
     <a class="back" href="../index.html">⬅ Voltar para o início</a>
+
+    <!-- SUPORTE (ÚNICA ALTERAÇÃO) -->
+    <p style="margin-top:25px;font-size:12px;color:#777;">
+        Suporte Técnico • GSM Mestre Unlocker • 
+        <a href="https://wa.me/5569993388320" target="_blank" style="color:#00ff66;text-decoration:none;">
+            WhatsApp
+        </a>
+    </p>
 </div>
 
 <div id="passwordBox">
@@ -202,7 +247,6 @@ p {
 </div>
 
 <script>
-/* ICE */
 const canvas = document.getElementById("iceRain");
 const ctx = canvas.getContext("2d");
 
@@ -241,7 +285,6 @@ function animate(){
 }
 animate();
 
-/* PASSWORD */
 let attempts = 0;
 let targetLink = "";
 
