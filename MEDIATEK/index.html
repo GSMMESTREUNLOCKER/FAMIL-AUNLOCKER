@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>REALME • FLASH • ARQUIVOS | Família Unlocker</title>
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    background: black;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* CANVAS */
+#iceRain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* CONTEÚDO */
+.container {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 80px 20px 120px;
+    color: #00ff66;
+}
+
+/* TÍTULO */
+h1 {
+    font-size: 40px;
+    text-shadow: 0 0 25px #00ff66;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #ccc;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn {
+    width: 320px;
+    padding: 16px;
+    background: rgba(160,160,160,0.30);
+    color: #fff;
+    font-size: 17px;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 0 20px rgba(255,255,255,0.20);
+    backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: .3s;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: rgba(190,190,190,0.45);
+    box-shadow: 0 0 35px rgba(255,255,255,0.40);
+}
+
+.back {
+    display: block;
+    margin-top: 50px;
+    color: #00ff66;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* ===== SENHA ===== */
+#passwordBox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+}
+
+.pass-panel {
+    width: 340px;
+    padding: 25px;
+    border: 1px solid #00ff66;
+    box-shadow: 0 0 30px #00ff66;
+    background: black;
+    font-family: "Courier New", monospace;
+    text-align: center;
+}
+
+#terminal {
+    color: #00ff66;
+    font-size: 13px;
+    text-align: left;
+    height: 90px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.pass-panel input {
+    width: 100%;
+    padding: 10px;
+    background: black;
+    border: 1px solid #00ff66;
+    color: #00ff66;
+    text-align: center;
+    outline: none;
+}
+
+.pass-panel button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    background: #00ff66;
+    color: black;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.small-back {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #00ff66;
+    cursor: pointer;
+    display: block;
+}
+
+#error {
+    margin-top: 10px;
+    color: red;
+    font-size: 13px;
+    display: none;
+}
+
+#blocked {
+    margin-top: 10px;
+    color: orange;
+    font-size: 13px;
+    display: none;
+}
+
+#success {
+    margin-top: 10px;
+    color: #00ff66;
+    font-size: 13px;
+    display: none;
+    text-shadow: 0 0 10px #00ff66;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="iceRain"></canvas>
+
+<div class="container">
+    <h1>REALME • FLASH • ARQUIVOS</h1>
+    <p>Área MEDIATEK • Organização por modelo</p>
+
+    <div class="links">
+        <div class="btn" onclick="openPassword('c75')">📱 REALME FLASH C75</div>
+        <div class="btn" onclick="openPassword('c65')">📱 REALME FLASH C65</div>
+        <div class="btn" onclick="openPassword('c75x')">📱 REALME FLASH C75X</div>
+        <a class="btn" href="c55/index.html">📱 REALME FLASH C55</a>
+        <a class="btn" href="c53/index.html">📱 REALME FLASH C53</a>
+    </div>
+
+    <a class="back" href="../index.html">⬅ Voltar para o início</a>
+</div>
+
+<div id="passwordBox">
+    <div class="pass-panel">
+        <div id="terminal"></div>
+        <input type="password" id="passInput" placeholder="DIGITE A SENHA">
+        <button onclick="checkPass()">ACESSAR</button>
+        <span class="small-back" onclick="closePassword()">↩ sair</span>
+
+        <div id="error">❌ SENHA INCORRETA</div>
+        <div id="blocked">🚫 ENTRE EM SUPORTE COM A FAMÍLIA UNLOCKER</div>
+        <div id="success">✔ ACESSO CONCLUÍDO • DOWNLOAD AUTORIZADO</div>
+    </div>
+</div>
+
+<script>
+/* ICE */
+const canvas=document.getElementById("iceRain");
+const ctx=canvas.getContext("2d");
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
+resize();addEventListener("resize",resize);
+let drops=[];
+for(let i=0;i<140;i++)drops.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,speed:Math.random()*2+1,size:Math.random()*2+1});
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.strokeStyle="rgba(160,220,255,0.7)";
+drops.forEach(d=>{
+ctx.beginPath();
+ctx.moveTo(d.x,d.y);
+ctx.lineTo(d.x,d.y+d.size*6);
+ctx.stroke();
+d.y+=d.speed;
+if(d.y>canvas.height){d.y=0;d.x=Math.random()*canvas.width;}
+});
+requestAnimationFrame(animate);
+}
+animate();
+
+/* PASSWORD */
+let attempts=0;
+let targetLink="";
+
+function openPassword(model){
+attempts=0;
+document.getElementById("passInput").value="";
+document.getElementById("passInput").disabled=false;
+document.getElementById("error").style.display="none";
+document.getElementById("blocked").style.display="none";
+document.getElementById("success").style.display="none";
+
+if(model==="c75"){
+targetLink="https://rms01.realme.net/sw/RMX3941export_11_14.1.0.287EX01_2025012117480000.zip";
+}else if(model==="c65"){
+targetLink="https://drive.google.com/file/d/1zweIY8F2SzkbfMGX7rilnIJFo8M5w3Al/view";
+}else if(model==="c75x"){
+targetLink="https://rms01.realme.net/sw/RMX5020export_11_15.0.0.750EX01_2025051614460000.zip";
+}
+
+document.getElementById("passwordBox").style.display="flex";
+typeTerminal(model.toUpperCase());
+}
+
+function closePassword(){
+document.getElementById("passwordBox").style.display="none";
+}
+
+function typeTerminal(model){
+const terminal=document.getElementById("terminal");
+terminal.innerHTML="";
+let lines=[
+"> INIT SECURE ACCESS",
+"> CHECKING DEVICE...",
+"> LOADING MODULE "+model,
+"> AUTH REQUIRED"
+];
+let l=0,c=0;
+(function type(){
+if(l<lines.length){
+if(c<lines[l].length){
+terminal.innerHTML+=lines[l][c++];
+}else{
+terminal.innerHTML+="<br>";
+l++;c=0;
+}
+setTimeout(type,25);
+}
+})();
+}
+
+function checkPass(){
+const pass=document.getElementById("passInput").value;
+const error=document.getElementById("error");
+const blocked=document.getElementById("blocked");
+const success=document.getElementById("success");
+
+error.style.display="none";
+
+if(attempts>=3)return;
+
+if(pass==="0666HACKER"){
+success.style.display="block";
+document.getElementById("passInput").disabled=true;
+setTimeout(()=>{window.location.href=targetLink;},1200);
+}else{
+attempts++;
+error.style.display="block";
+if(attempts>=3){
+blocked.style.display="block";
+document.getElementById("passInput").disabled=true;
+}
+}
+}
+</script>
+
+</body>
+</html>
