@@ -56,19 +56,19 @@ p {
     font-size: 18px;
 }
 
-/* BOTÕES (verde suavizado mais um pouco) */
+/* BOTÕES */
 .btn {
     display: inline-block;
     margin: 12px;
     padding: 14px 40px;
-    background: #00d957; /* AJUSTE FINAL */
+    background: #00d957;
     color: black;
     font-size: 18px;
     border-radius: 30px;
     border: none;
     text-decoration: none;
     font-weight: bold;
-    box-shadow: 0 0 14px #00d957; /* MENOS BRILHO */
+    box-shadow: 0 0 14px #00d957;
     transition: 0.3s;
     cursor: pointer;
 }
@@ -104,7 +104,6 @@ p {
     font-weight: bold;
 }
 
-/* BLOQUEADOS */
 .beta {
     cursor: not-allowed;
     opacity: 0.6;
@@ -142,30 +141,37 @@ p {
     font-weight: bold;
     font-size: 13px;
     letter-spacing: 1px;
-    position: relative;
     text-shadow: 0 0 6px #ff0000, 0 0 12px #990000;
 }
 
-.blood-text::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 100%;
-    height: 8px;
-    background: linear-gradient(to bottom, rgba(255,0,0,0.8), rgba(255,0,0,0));
-    animation: drip 1.8s infinite ease-in-out;
+/* 🔴 YOUTUBE BADGE */
+.youtube-link {
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0,0,0,0.85);
+    padding: 10px 16px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 0 25px rgba(255,0,0,0.8);
 }
 
-@keyframes drip {
-    0% { height: 4px; opacity: 0.9; }
-    50% { height: 10px; opacity: 0.6; }
-    100% { height: 4px; opacity: 0.9; }
+.youtube-link img {
+    width: 38px;
+    height: 38px;
+    filter: drop-shadow(0 0 6px rgba(255,0,0,0.8));
 }
 
-.whatsapp-link img {
-    width: 28px;
-    height: 28px;
+.youtube-text {
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 1.2px;
+    text-shadow: 0 0 6px #ff0000, 0 0 14px #990000;
 }
 
 /* CURSOR HACKER */
@@ -206,6 +212,14 @@ p {
 
 <canvas id="fx"></canvas>
 
+<!-- 🔴 YOUTUBE -->
+<a href="https://youtube.com/@familiaunlocker?si=nDCA60eifuTSy3qn"
+   class="youtube-link"
+   target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg">
+    <span class="youtube-text">YB FAMÍLIA UNLOCKER</span>
+</a>
+
 <div class="container">
     <h1>Família Unlocker</h1>
     <p>ROMs • UNISOC • OTA • Segurança Android</p>
@@ -220,7 +234,6 @@ p {
     </div>
 
     <span class="btn beta">🔄 Atualizações BETA</span>
-
     <a href="alugueis-tools.html" class="btn">🛠️ ALUGUÉIS DE TOOLS</a>
 </div>
 
@@ -229,7 +242,7 @@ p {
 <a href="https://chat.whatsapp.com/B7ZnnZNXxjOASMdznPyrx8"
    class="whatsapp-link"
    target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="28">
     <span class="blood-text">SUPORTE / COMUNIDADE</span>
 </a>
 
