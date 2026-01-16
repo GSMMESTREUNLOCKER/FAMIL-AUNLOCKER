@@ -2,24 +2,27 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.15, maximum-scale=2.5">
 
-<title>REALME • FLASH • ARQUIVOS | Família Unlocker</title>
+<title>Família Unlocker - Área Técnica</title>
 
 <style>
-html, body {
+* {
     margin: 0;
     padding: 0;
-    width: 100%;
-    min-height: 100%;
-    background: black;
-    overflow-x: hidden;
-    overflow-y: auto;
+    box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+    background: black;
+    color: #00ff66;
+    height: 100vh;
+    overflow: hidden;
+}
+
 /* CANVAS */
-#iceRain {
+#fx {
     position: fixed;
     top: 0;
     left: 0;
@@ -33,286 +36,277 @@ html, body {
 .container {
     position: relative;
     z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
     text-align: center;
-    padding: 80px 20px 120px;
-    color: #00ff66;
+    padding: 0 15px;
 }
 
 /* TÍTULO */
 h1 {
-    font-size: 40px;
+    font-size: 48px;
     text-shadow: 0 0 25px #00ff66;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
+/* SUB */
 p {
     color: #ccc;
-    margin-bottom: 40px;
-    font-size: 16px;
+    margin-bottom: 30px;
+    font-size: 18px;
 }
 
-.links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
+/* BOTÕES (verde suavizado mais um pouco) */
 .btn {
-    width: 320px;
-    padding: 16px;
-    background: rgba(160,160,160,0.30);
-    color: #fff;
-    font-size: 17px;
+    display: inline-block;
+    margin: 12px;
+    padding: 14px 40px;
+    background: #00d957; /* AJUSTE FINAL */
+    color: black;
+    font-size: 18px;
     border-radius: 30px;
-    font-weight: bold;
-    border: 1px solid rgba(255,255,255,0.25);
-    box-shadow: 0 0 20px rgba(255,255,255,0.20);
-    backdrop-filter: blur(6px);
-    cursor: pointer;
-    transition: .3s;
+    border: none;
     text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 14px #00d957; /* MENOS BRILHO */
+    transition: 0.3s;
+    cursor: pointer;
 }
 
 .btn:hover {
-    background: rgba(190,190,190,0.45);
-    box-shadow: 0 0 35px rgba(255,255,255,0.40);
+    background: #00c24d;
+    box-shadow: 0 0 22px #00d957;
 }
 
-.back {
+/* DROPDOWN */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgba(0,0,0,0.95);
+    min-width: 220px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px #00ff66;
+    margin-top: 12px;
+    z-index: 999;
+}
+
+.dropdown-content a,
+.dropdown-content span {
     display: block;
-    margin-top: 50px;
+    padding: 14px;
     color: #00ff66;
     text-decoration: none;
-    font-size: 14px;
-}
-
-/* ===== SENHA ===== */
-#passwordBox {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.92);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 99999;
-}
-
-.pass-panel {
-    width: 340px;
-    padding: 25px;
-    border: 1px solid #00ff66;
-    box-shadow: 0 0 30px #00ff66;
-    background: black;
-    font-family: "Courier New", monospace;
-    text-align: center;
-}
-
-#terminal {
-    color: #00ff66;
-    font-size: 13px;
-    text-align: left;
-    height: 90px;
-    overflow: hidden;
-    margin-bottom: 10px;
-}
-
-.pass-panel input {
-    width: 100%;
-    padding: 10px;
-    background: black;
-    border: 1px solid #00ff66;
-    color: #00ff66;
-    text-align: center;
-    outline: none;
-}
-
-.pass-panel button {
-    width: 100%;
-    margin-top: 12px;
-    padding: 10px;
-    background: #00ff66;
-    color: black;
-    border: none;
     font-weight: bold;
-    cursor: pointer;
 }
 
-.small-back {
-    margin-top: 10px;
-    font-size: 12px;
-    color: #00ff66;
-    cursor: pointer;
-    display: block;
+/* BLOQUEADOS */
+.beta {
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
-#error {
-    margin-top: 10px;
-    color: red;
+/* ASSINATURA */
+.dev-credit {
+    position: fixed;
+    bottom: 8px;
+    right: 12px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    opacity: 0.45;
+    z-index: 3;
+}
+
+/* WHATSAPP */
+.whatsapp-link {
+    position: fixed;
+    bottom: 12px;
+    left: 12px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0,0,0,0.85);
+    padding: 10px 16px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 0 20px rgba(255,0,0,0.6);
+}
+
+.blood-text {
+    color: #ff0000;
+    font-weight: bold;
     font-size: 13px;
-    display: none;
+    letter-spacing: 1px;
+    position: relative;
+    text-shadow: 0 0 6px #ff0000, 0 0 12px #990000;
 }
 
-#blocked {
-    margin-top: 10px;
-    color: orange;
-    font-size: 13px;
-    display: none;
+.blood-text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: 8px;
+    background: linear-gradient(to bottom, rgba(255,0,0,0.8), rgba(255,0,0,0));
+    animation: drip 1.8s infinite ease-in-out;
 }
 
-#success {
-    margin-top: 10px;
-    color: #00ff66;
-    font-size: 13px;
-    display: none;
-    text-shadow: 0 0 10px #00ff66;
+@keyframes drip {
+    0% { height: 4px; opacity: 0.9; }
+    50% { height: 10px; opacity: 0.6; }
+    100% { height: 4px; opacity: 0.9; }
+}
+
+.whatsapp-link img {
+    width: 28px;
+    height: 28px;
+}
+
+/* CURSOR HACKER */
+#hacker-cursor {
+    position: fixed;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: rgba(0,255,100,0.9);
+    box-shadow: 0 0 12px #00ff66;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}
+
+.hacker-trail {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    pointer-events: none;
+    background: rgba(0,255,100,0.6);
+    box-shadow: 0 0 10px #00ff66;
+    z-index: 9998;
+    animation: hackerFade 0.6s linear forwards;
+}
+
+@keyframes hackerFade {
+    to {
+        opacity: 0;
+        transform: scale(0.2);
+    }
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="iceRain"></canvas>
+<canvas id="fx"></canvas>
 
 <div class="container">
-    <h1>REALME • FLASH • ARQUIVOS</h1>
-    <p>Área MEDIATEK • Organização por modelo</p>
+    <h1>Família Unlocker</h1>
+    <p>ROMs • UNISOC • OTA • Segurança Android</p>
 
-    <div class="links">
-        <div class="btn" onclick="openPassword('c75')">📱 REALME FLASH C75</div>
-        <div class="btn" onclick="openPassword('c65')">📱 REALME FLASH C65</div>
-        <div class="btn" onclick="openPassword('c75x')">📱 REALME FLASH C75X</div>
-        <div class="btn" onclick="openPassword('c55')">📱 REALME FLASH C55</div>
+    <div class="dropdown">
+        <button class="btn" id="romsBtn" type="button">📂 ROMs</button>
+        <div class="dropdown-content" id="romsMenu">
+            <a href="unisoс.html">UNISOC</a>
+            <span class="beta">QUALCOMM BETA</span>
+            <a href="MEDIATEK/index.html">MEDIATEK</a>
+        </div>
     </div>
 
-    <a class="back" href="../index.html">⬅ Voltar para o início</a>
+    <span class="btn beta">🔄 Atualizações BETA</span>
+
+    <a href="alugueis-tools.html" class="btn">🛠️ ALUGUÉIS DE TOOLS</a>
 </div>
 
-<div id="passwordBox">
-    <div class="pass-panel">
-        <div id="terminal"></div>
-        <input type="password" id="passInput" placeholder="DIGITE A SENHA">
-        <button onclick="checkPass()">ACESSAR</button>
-        <span class="small-back" onclick="closePassword()">↩ sair</span>
+<div class="dev-credit">root@familia-unlocker:~# GSM_MESTRE</div>
 
-        <div id="error">❌ SENHA INCORRETA</div>
-        <div id="blocked">🚫 ENTRE EM SUPORTE COM A FAMÍLIA UNLOCKER</div>
-        <div id="success">✔ ACESSO CONCLUÍDO • DOWNLOAD AUTORIZADO</div>
-    </div>
-</div>
+<a href="https://chat.whatsapp.com/B7ZnnZNXxjOASMdznPyrx8"
+   class="whatsapp-link"
+   target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+    <span class="blood-text">SUPORTE / COMUNIDADE</span>
+</a>
 
 <script>
-/* ICE */
-const canvas = document.getElementById("iceRain");
+const canvas = document.getElementById("fx");
 const ctx = canvas.getContext("2d");
-function resize(){
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 }
 resize();
-addEventListener("resize", resize);
+window.addEventListener("resize", resize);
 
 let drops = [];
-for(let i=0;i<140;i++){
+for (let i = 0; i < 350; i++) {
     drops.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height,
-        speed: Math.random()*2+1,
-        size: Math.random()*2+1
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        speed: 6 + Math.random() * 8,
+        length: 15 + Math.random() * 25
     });
 }
 
-function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.strokeStyle="rgba(160,220,255,0.7)";
-    drops.forEach(d=>{
+function rain() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeStyle = "rgba(0,255,100,0.8)";
+    ctx.lineWidth = 1;
+
+    for (let d of drops) {
         ctx.beginPath();
-        ctx.moveTo(d.x,d.y);
-        ctx.lineTo(d.x,d.y+d.size*6);
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x, d.y + d.length);
         ctx.stroke();
         d.y += d.speed;
-        if(d.y > canvas.height){
-            d.y = 0;
-            d.x = Math.random()*canvas.width;
+        if (d.y > canvas.height) {
+            d.y = -30;
+            d.x = Math.random() * canvas.width;
         }
-    });
+    }
+}
+
+function animate() {
+    rain();
     requestAnimationFrame(animate);
 }
 animate();
 
-/* PASSWORD */
-let attempts = 0;
-let targetLink = "";
+const romsBtn = document.getElementById("romsBtn");
+const romsMenu = document.getElementById("romsMenu");
 
-function openPassword(model){
-    attempts = 0;
-    passInput.value = "";
-    passInput.disabled = false;
-    error.style.display = "none";
-    blocked.style.display = "none";
-    success.style.display = "none";
+romsBtn.addEventListener("click", e => {
+    e.stopPropagation();
+    romsMenu.style.display =
+        romsMenu.style.display === "block" ? "none" : "block";
+});
 
-    if(model === "c75"){
-        targetLink = "https://rms01.realme.net/sw/RMX3941export_11_14.1.0.287EX01_2025012117480000.zip";
-    } else if(model === "c65"){
-        targetLink = "https://drive.google.com/file/d/1zweIY8F2SzkbfMGX7rilnIJFo8M5w3Al/view";
-    } else if(model === "c75x"){
-        targetLink = "https://rms01.realme.net/sw/RMX5020export_11_15.0.0.750EX01_2025051614460000.zip";
-    } else if(model === "c55"){
-        targetLink = "https://rms01.realme.net/sw/RMX3710export_11_14.0.0.1320EX01_2024120411520000.zip";
-    }
+document.addEventListener("click", () => {
+    romsMenu.style.display = "none";
+});
 
-    passwordBox.style.display = "flex";
-    typeTerminal(model.toUpperCase());
-}
+const hackerCursor = document.createElement("div");
+hackerCursor.id = "hacker-cursor";
+document.body.appendChild(hackerCursor);
 
-function closePassword(){
-    passwordBox.style.display = "none";
-}
+document.addEventListener("mousemove", e => {
+    hackerCursor.style.left = e.clientX + "px";
+    hackerCursor.style.top = e.clientY + "px";
 
-function typeTerminal(model){
-    terminal.innerHTML = "";
-    const lines = [
-        "> INIT SECURE ACCESS",
-        "> CHECKING DEVICE...",
-        "> LOADING MODULE " + model,
-        "> AUTH REQUIRED"
-    ];
-    let l=0,c=0;
-    (function type(){
-        if(l < lines.length){
-            if(c < lines[l].length){
-                terminal.innerHTML += lines[l][c++];
-            } else {
-                terminal.innerHTML += "<br>";
-                l++; c=0;
-            }
-            setTimeout(type,25);
-        }
-    })();
-}
+    const trail = document.createElement("div");
+    trail.className = "hacker-trail";
+    trail.style.left = e.clientX + "px";
+    trail.style.top = e.clientY + "px";
+    document.body.appendChild(trail);
 
-function checkPass(){
-    const pass = passInput.value;
-    error.style.display = "none";
-
-    if(attempts >= 3) return;
-
-    if(pass === "0666HACKER"){
-        success.style.display = "block";
-        passInput.disabled = true;
-        setTimeout(()=>{
-            window.location.href = targetLink;
-        },1200);
-    } else {
-        attempts++;
-        error.style.display = "block";
-        if(attempts >= 3){
-            blocked.style.display = "block";
-            passInput.disabled = true;
-        }
-    }
-}
+    setTimeout(() => trail.remove(), 600);
+});
 </script>
 
 </body>
