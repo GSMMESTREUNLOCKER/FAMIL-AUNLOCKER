@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>REALME UNISOC / SPREADTRUM | Família Unlocker</title>
 
 <style>
@@ -18,7 +17,6 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* CANVAS DA CHUVA DE CRISTAL */
 #iceRain {
     position: fixed;
     top: 0;
@@ -29,7 +27,6 @@ html, body {
     pointer-events: none;
 }
 
-/* CONTEÚDO */
 .container {
     position: relative;
     z-index: 2;
@@ -38,21 +35,18 @@ html, body {
     color: #00ff66;
 }
 
-/* TÍTULO */
 h1 {
     font-size: 42px;
     text-shadow: 0 0 25px #00ff66;
     margin-bottom: 10px;
 }
 
-/* SUBTÍTULO */
 p {
     color: #ccc;
     margin-bottom: 40px;
     font-size: 16px;
 }
 
-/* LINKS */
 .links {
     display: flex;
     flex-direction: column;
@@ -60,29 +54,27 @@ p {
     gap: 20px;
 }
 
-/* BOTÕES */
 .btn {
     width: 320px;
     max-width: 100%;
     padding: 16px;
-    background: rgba(160, 160, 160, 0.30);
-    color: #ffffff;
+    background: rgba(160,160,160,0.30);
+    color: #fff;
     font-size: 17px;
     border-radius: 30px;
     text-decoration: none;
     font-weight: bold;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.20);
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: 0 0 20px rgba(255,255,255,0.20);
     backdrop-filter: blur(6px);
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .btn:hover {
-    background: rgba(190, 190, 190, 0.45);
-    box-shadow: 0 0 35px rgba(255, 255, 255, 0.40);
+    background: rgba(190,190,190,0.45);
+    box-shadow: 0 0 35px rgba(255,255,255,0.40);
 }
 
-/* VOLTAR */
 .back {
     display: block;
     margin-top: 50px;
@@ -91,7 +83,6 @@ p {
     font-size: 14px;
 }
 
-/* ALERTA BACKUP - PISCANDO */
 .blink-alert {
     display: inline-block;
     animation: blinkBackup 1s infinite;
@@ -103,82 +94,33 @@ p {
     100% { opacity: 1; }
 }
 
-/* CURSOR ICE */
-#ice-cursor {
-    position: fixed;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    pointer-events: none;
-    background: radial-gradient(circle at top left,
-        rgba(230,250,255,0.9),
-        rgba(120,210,255,0.45),
-        rgba(30,160,255,0.15)
-    );
-    box-shadow:
-        0 0 20px rgba(160,230,255,0.9),
-        0 0 45px rgba(120,200,255,0.8),
-        0 0 70px rgba(80,180,255,0.6);
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-}
-
-.ice-trail {
-    position: fixed;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    pointer-events: none;
-    background: radial-gradient(circle,
-        rgba(200,245,255,0.9),
-        rgba(120,220,255,0.5),
-        rgba(0,150,255,0.15)
-    );
-    box-shadow:
-        0 0 25px rgba(170,235,255,1),
-        0 0 60px rgba(120,210,255,0.9);
-    z-index: 9998;
-    animation: iceFade 0.8s linear forwards;
-}
-
-@keyframes iceFade {
-    to {
-        opacity: 0;
-        transform: scale(0.2);
-        filter: blur(2px);
-    }
-}
-
-/* WHATSAPP */
-.whatsapp-blood {
+/* WHATSAPP OFICIAL */
+.whatsapp-clean {
     position: fixed;
     bottom: 18px;
     right: 18px;
-    z-index: 10000;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: radial-gradient(circle at top left, #8b0000, #3b0000);
-    color: #fff;
-    padding: 14px 18px;
-    border-radius: 40px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 13px;
-    box-shadow: 0 0 35px rgba(200,0,0,0.9);
-    border: 1px solid rgba(255,0,0,0.6);
-}
-
-.whatsapp-blood .icon {
-    width: 28px;
-    height: 28px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
-    background: radial-gradient(circle at top left, #ff2b2b, #6b0000);
+    background: #25D366;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 20px rgba(255,0,0,1);
-    font-size: 16px;
+    text-decoration: none;
+    z-index: 10000;
+    box-shadow: 0 0 25px rgba(37,211,102,0.7);
+    transition: 0.3s;
+}
+
+.whatsapp-clean:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 35px rgba(37,211,102,1);
+}
+
+.whatsapp-clean svg {
+    width: 28px;
+    height: 28px;
+    fill: #ffffff;
 }
 </style>
 </head>
@@ -189,120 +131,76 @@ p {
 
 <div class="container">
     <h1>REALME UNISOC / SPREADTRUM</h1>
-
     <p>ROMs • Flash • Arquivos técnicos</p>
 
-    <!-- AVISO BACKUP -->
-    <p style="
-        color:#ffcc00;
-        font-size:14px;
-        margin-top:-25px;
-        margin-bottom:35px;
-        text-shadow:0 0 10px rgba(255,204,0,0.6);
-    ">
+    <p style="color:#ffcc00;font-size:14px;margin-top:-25px;margin-bottom:35px;text-shadow:0 0 10px rgba(255,204,0,0.6);">
         <span class="blink-alert">⚠️</span>
         ATENÇÃO: FAÇA BACKUP SEMPRE ANTES DE QUALQUER PROCEDIMENTO
     </p>
 
-    <!-- INFO MDM -->
-    <p style="
-        color:#9d9d9d;
-        font-size:13px;
-        margin-top:-20px;
-        margin-bottom:30px;
-        letter-spacing:0.5px;
-    ">
-        ARQUIVOS MDM PAY JOY PATCH DE NOVEMBRO / DEZEMBRO
+    <p style="color:#9d9d9d;font-size:13px;margin-top:-20px;margin-bottom:30px;letter-spacing:0.5px;">
+        ARQUIVOS MDM PAYJOY PATCH NOVEMBRO / DEZEMBRO
     </p>
 
     <div class="links">
-        <a class="btn" href="#" target="_blank">📥 Flash Realme C61</a>
-        <a class="btn" href="#" target="_blank">📥 Flash Realme Note 60X</a>
-        <a class="btn" href="#" target="_blank">📥 Flash Realme Note 60</a>
-        <a class="btn" href="#" target="_blank">📥 Flash Realme C63</a>
-        <a class="btn" href="#" target="_blank">📥 DUMP NOTE 70 MDM GRÁTIS</a>
-        <a class="btn" href="#" target="_blank">📥 Flash Realme C71</a>
-        <a class="btn" href="#" target="_blank">📥 Flash Realme C53</a>
-        <a class="btn" href="#" target="_blank">📥 Flash Realme Note 50</a>
+        <a class="btn" href="https://drive.google.com/file/d/17j0BB5dSiWxMNICT9TzUjLJTbtLFwyyj/view" target="_blank">📥 Flash Realme C63</a>
+        <a class="btn" href="https://drive.google.com/file/d/1I9btrFz4CH5LpLb3-W9oNwU7c5fcfKft/view" target="_blank">📥 Flash Realme Note 60</a>
+        <a class="btn" href="https://drive.google.com/file/d/1f3bulR2s6h6zTKaeIwXcAZE7h2GPPYuI/view" target="_blank">📥 Flash Realme Note 60X</a>
+        <a class="btn" href="https://drive.google.com/file/d/1fX_2vEuNz0fh6ErQBKO9ZhRE4VECxWh2/view" target="_blank">📥 Flash Realme C61</a>
+        <a class="btn" href="https://drive.google.com/file/d/1ONXtwrHqSVKVAxEGS6MNwSTQRw3avACn/view" target="_blank">📥 DUMP NOTE 70 MDM GRÁTIS</a>
+        <a class="btn" href="https://drive.google.com/file/d/1dSfHUu62A3EAxVy7zEvi3xbJ-ZP0lprL/view" target="_blank">📥 Flash Realme C71</a>
+        <a class="btn" href="https://drive.google.com/file/d/1Q57zwQ48oZsy2M8rCWfXO7vK4c_59PpX/view" target="_blank">📥 Flash Realme C53</a>
+        <a class="btn" href="https://drive.google.com/file/d/1ZqlKmxxGqCu9_d1aXrSeQvgXykt_gZhu/view" target="_blank">📥 Flash Realme Note 50</a>
     </div>
 
     <a class="back" href="index.html">⬅ Voltar</a>
 </div>
 
-<a class="whatsapp-blood" href="https://wa.me/5569993388320" target="_blank">
-    <span class="icon">☎</span>
-    SUPORTE • ACESSO DE TODAS AS ROMS
+<!-- WHATSAPP OFICIAL -->
+<a class="whatsapp-clean" href="https://wa.me/5569993388320" target="_blank" title="WhatsApp">
+    <svg viewBox="0 0 32 32">
+        <path d="M16.02 3C9.39 3 4 8.38 4 15.02c0 2.65.77 5.11 2.1 7.19L4 29l7-2.04c1.99 1.09 4.23 1.7 6.58 1.7 6.63 0 12.02-5.38 12.02-12.02C28.04 8.38 22.65 3 16.02 3zm0 21.8c-2.18 0-4.21-.63-5.92-1.72l-.42-.26-4.15 1.21 1.24-4.04-.27-.42a9.77 9.77 0 01-1.55-5.26c0-5.41 4.4-9.81 9.81-9.81 5.41 0 9.81 4.4 9.81 9.81 0 5.41-4.4 9.81-9.81 9.81zm5.42-7.28c-.29-.14-1.7-.84-1.96-.94-.26-.1-.45-.14-.64.15-.19.29-.74.94-.91 1.13-.17.19-.34.21-.63.07-.29-.14-1.21-.45-2.31-1.41-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.14-.14.29-.34.44-.51.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.14-.64-1.56-.88-2.13-.23-.56-.47-.48-.64-.49h-.55c-.19 0-.5.07-.77.36-.26.29-1.01 1-1.01 2.41 0 1.41 1.04 2.77 1.19 2.96.14.19 2.06 3.14 4.99 4.39.7.3 1.24.49 1.66.63.7.22 1.33.19 1.82.11.55-.08 1.7-.69 1.94-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34z"/>
+    </svg>
 </a>
 
 <script>
 const canvas = document.getElementById("iceRain");
 const ctx = canvas.getContext("2d");
 
-function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+function resize(){
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
 }
 resize();
-window.addEventListener("resize", resize);
+addEventListener("resize", resize);
 
-let crystals = [];
-const total = 160;
-
-class Crystal {
-    constructor() { this.reset(); }
-    reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 1;
-        this.speed = Math.random() * 2 + 1;
-        this.alpha = Math.random() * 0.6 + 0.4;
-    }
-    draw() {
-        ctx.beginPath();
-        ctx.strokeStyle = `rgba(160,220,255,${this.alpha})`;
-        ctx.lineWidth = this.size;
-        ctx.shadowBlur = 12;
-        ctx.shadowColor = "#9be7ff";
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x + this.size, this.y + this.size * 4);
-        ctx.stroke();
-    }
-    update() {
-        this.y += this.speed;
-        if (this.y > canvas.height) {
-            this.reset();
-            this.y = 0;
-        }
-        this.draw();
-    }
+let drops=[];
+for(let i=0;i<160;i++){
+    drops.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        speed:Math.random()*2+1,
+        size:Math.random()*2+1
+    });
 }
 
-for (let i = 0; i < total; i++) crystals.push(new Crystal());
-
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    crystals.forEach(c => c.update());
+function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    ctx.strokeStyle="rgba(160,220,255,0.7)";
+    drops.forEach(d=>{
+        ctx.beginPath();
+        ctx.moveTo(d.x,d.y);
+        ctx.lineTo(d.x,d.y+d.size*6);
+        ctx.stroke();
+        d.y+=d.speed;
+        if(d.y>canvas.height){
+            d.y=0;
+            d.x=Math.random()*canvas.width;
+        }
+    });
     requestAnimationFrame(animate);
 }
 animate();
-
-/* CURSOR ICE */
-const iceCursor = document.createElement("div");
-iceCursor.id = "ice-cursor";
-document.body.appendChild(iceCursor);
-
-document.addEventListener("mousemove", e => {
-    iceCursor.style.left = e.clientX + "px";
-    iceCursor.style.top = e.clientY + "px";
-
-    const trail = document.createElement("div");
-    trail.className = "ice-trail";
-    trail.style.left = e.clientX + "px";
-    trail.style.top = e.clientY + "px";
-    document.body.appendChild(trail);
-
-    setTimeout(() => trail.remove(), 800);
-});
 </script>
 
 </body>
