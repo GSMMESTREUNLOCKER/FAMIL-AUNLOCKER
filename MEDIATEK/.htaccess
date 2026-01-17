@@ -1,8 +1,0 @@
-RewriteEngine On
-
-# Redireciona index.html para a pasta (URL limpa / Google)
-RewriteCond %{THE_REQUEST} \s/MEDIATEK/index\.html[\s?] [NC]
-RewriteRule ^index\.html$ /MEDIATEK/ [R=301,L]
-
-# Define index.html como padrão da pasta
-DirectoryIndex index.html
