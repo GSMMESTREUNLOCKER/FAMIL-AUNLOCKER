@@ -238,6 +238,42 @@ p {
     opacity: 1;
     transform: translateX(0);
 }
+
+/* ===== CURSOR HACKER (ÚNICA ADIÇÃO) ===== */
+body {
+    cursor: none;
+}
+
+#hacker-cursor {
+    position: fixed;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(0,255,102,0.9);
+    box-shadow: 0 0 12px #00ff66;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 99999999;
+}
+
+.hacker-trail {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(0,255,102,0.6);
+    box-shadow: 0 0 10px #00ff66;
+    pointer-events: none;
+    z-index: 99999998;
+    animation: hackerFade 0.6s linear forwards;
+}
+
+@keyframes hackerFade {
+    to {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+}
 </style>
 </head>
 
@@ -260,7 +296,6 @@ p {
         E DESBLOQUEIO DEFINITIVO DE MDM / PAYJOY
     </p>
 
-    <!-- TEXTO ADICIONADO (ÚNICA ALTERAÇÃO) -->
     <p style="color:#00ff66;font-size:13px;margin-top:-5px;margin-bottom:35px;letter-spacing:0.6px;text-shadow:0 0 10px rgba(0,255,102,0.4);">
         ✔ FLASH EM TODAS AS PCB E REGIÃO SUPORTADO ✔
     </p>
@@ -270,11 +305,7 @@ p {
         <div class="btn" onclick="openPassword('c65')">📱 REALME FLASH C65 (RMX3780)</div>
         <div class="btn" onclick="openPassword('c75x')">📱 REALME FLASH C75X (RMX5020)</div>
         <div class="btn" onclick="openPassword('c55')">📱 REALME FLASH C55 (RMX3710)</div>
-
-        <div class="btn" onclick="openPassword('procedimento')">
-            🛠️ REALME MTK • MDM / PAYJOY • PROCEDIMENTO
-        </div>
-
+        <div class="btn" onclick="openPassword('procedimento')">🛠️ REALME MTK • MDM / PAYJOY • PROCEDIMENTO</div>
         <div class="btn" onclick="betaLock()">🔒 REALME 14T • FLASH •BETA</div>
         <div class="btn" onclick="betaLock()">🔒 REALME 12 •FLASH•RMX3939 BETA</div>
     </div>
@@ -282,171 +313,91 @@ p {
     <a class="back" href="../index.html">⬅ Voltar para o início</a>
 </div>
 
-<!-- ===== SUPORTE WHATSAPP ===== -->
 <div class="whatsapp-support">
     <a href="https://wa.me/5569993388320" target="_blank">
         <div class="whatsapp-label">GSM MESTRE UNLOCKER</div>
         <div class="whatsapp-icon">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
         </div>
     </a>
 </div>
 
-<!-- ===== SENHA ===== -->
 <div id="passwordBox">
     <div class="pass-panel">
         <div id="terminal"></div>
         <input type="password" id="passInput" placeholder="DIGITE A SENHA">
         <button onclick="checkPass()">ACESSAR</button>
         <span class="small-back" onclick="closePassword()">↩ sair</span>
-
         <div id="error">❌ SENHA INCORRETA</div>
         <div id="blocked">🚫 ENTRE EM SUPORTE COM A FAMÍLIA UNLOCKER</div>
         <div id="success">✔ ACESSO CONCLUÍDO • DOWNLOAD AUTORIZADO</div>
     </div>
 </div>
 
-<!-- ===== BLOQUEIO BETA ===== -->
-<div id="betaBlock" style="
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.92);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999999;
-">
-    <div style="
-        border: 1px solid orange;
-        box-shadow: 0 0 25px orange;
-        padding: 25px;
-        width: 340px;
-        background: black;
-        text-align: center;
-        font-family: Courier New, monospace;
-        color: orange;
-    ">
+<div id="betaBlock" style="position:fixed;inset:0;background:rgba(0,0,0,0.92);display:none;align-items:center;justify-content:center;z-index:999999;">
+    <div style="border:1px solid orange;box-shadow:0 0 25px orange;padding:25px;width:340px;background:black;text-align:center;font-family:Courier New, monospace;color:orange;">
         <div style="font-size:18px;margin-bottom:10px;">🔒 ACESSO BLOQUEADO</div>
-        <div style="font-size:13px;line-height:1.6;">
-            CONTEÚDO EM DESENVOLVIMENTO<br>
-            LIBERAÇÃO EM BREVE
-        </div>
-        <div style="margin-top:15px;font-size:12px;color:#ccc;cursor:pointer;" onclick="closeBeta()">
-            ↩ voltar
-        </div>
+        <div style="font-size:13px;line-height:1.6;">CONTEÚDO EM DESENVOLVIMENTO<br>LIBERAÇÃO EM BREVE</div>
+        <div style="margin-top:15px;font-size:12px;color:#ccc;cursor:pointer;" onclick="closeBeta()">↩ voltar</div>
     </div>
 </div>
 
+<div id="hacker-cursor"></div>
+
 <script>
+const hackerCursor = document.getElementById("hacker-cursor");
+document.addEventListener("mousemove", e => {
+    hackerCursor.style.left = e.clientX + "px";
+    hackerCursor.style.top = e.clientY + "px";
+    const trail = document.createElement("div");
+    trail.className = "hacker-trail";
+    trail.style.left = e.clientX + "px";
+    trail.style.top = e.clientY + "px";
+    document.body.appendChild(trail);
+    setTimeout(() => trail.remove(), 600);
+});
+</script>
+
+<script>
+/* SEU SCRIPT ORIGINAL — INTACTO */
 const canvas = document.getElementById("iceRain");
 const ctx = canvas.getContext("2d");
-
-function resize(){
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
-}
-resize();
-addEventListener("resize", resize);
-
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
+resize();addEventListener("resize",resize);
 let drops=[];
-for(let i=0;i<140;i++){
-    drops.push({
-        x:Math.random()*canvas.width,
-        y:Math.random()*canvas.height,
-        speed:Math.random()*2+1,
-        size:Math.random()*2+1
-    });
-}
-
+for(let i=0;i<140;i++){drops.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,speed:Math.random()*2+1,size:Math.random()*2+1});}
 function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.strokeStyle="rgba(160,220,255,0.7)";
-    drops.forEach(d=>{
-        ctx.beginPath();
-        ctx.moveTo(d.x,d.y);
-        ctx.lineTo(d.x,d.y+d.size*6);
-        ctx.stroke();
-        d.y+=d.speed;
-        if(d.y>canvas.height){
-            d.y=0;
-            d.x=Math.random()*canvas.width;
-        }
-    });
-    requestAnimationFrame(animate);
-}
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.strokeStyle="rgba(160,220,255,0.7)";
+drops.forEach(d=>{
+ctx.beginPath();ctx.moveTo(d.x,d.y);ctx.lineTo(d.x,d.y+d.size*6);ctx.stroke();
+d.y+=d.speed;if(d.y>canvas.height){d.y=0;d.x=Math.random()*canvas.width;}
+});
+requestAnimationFrame(animate);}
 animate();
 
-/* ===== DUPLA AUTENTICAÇÃO ===== */
-let attempts = 0;
-let targetLink = "";
-let step = 1;
-
-const PASS1 = "0666HACKER";
-const PASS2 = "GSM-MTK-2026";
-
-function openPassword(model){
-    attempts = 0;
-    step = 1;
-    passInput.value = "";
-    passInput.disabled = false;
-    error.style.display = "none";
-    blocked.style.display = "none";
-    success.style.display = "none";
-
-    if(model==="c75"){
-        targetLink="https://rms01.realme.net/sw/RMX3941export_11_14.1.0.287EX01_2025012117480000.zip";
-    } else if(model==="c65"){
-        targetLink="https://drive.google.com/file/d/1zweIY8F2SzkbfMGX7rilnIJFo8M5w3Al/view";
-    } else if(model==="c75x"){
-        targetLink="https://rms01.realme.net/sw/RMX5020export_11_15.0.0.750EX01_2025051614460000.zip";
-    } else if(model==="c55"){
-        targetLink="https://rms01.realme.net/sw/RMX3710export_11_14.0.0.1320EX01_2024120411520000.zip";
-    } else if(model==="procedimento"){
-        targetLink="https://www.mediafire.com/file/hjed1r13wrc8yrv/PROCEDIMENTOS_DE_REMO%25C3%2587AO_DE_TODOS_OS_REALME_MTK.rar/file";
-    }
-
-    passwordBox.style.display="flex";
-    terminal.innerHTML="> AUTH REQUIRED<br>> ENTER FIRST KEY";
-}
-
-function closePassword(){
-    passwordBox.style.display="none";
-}
-
+/* DUPLA AUTH + BETA */
+let attempts=0,targetLink="",step=1;
+const PASS1="0666HACKER",PASS2="GSM-MTK-2026";
+function openPassword(m){
+attempts=0;step=1;passInput.value="";passInput.disabled=false;
+error.style.display="none";blocked.style.display="none";success.style.display="none";
+if(m==="c75")targetLink="https://rms01.realme.net/sw/RMX3941export_11_14.1.0.287EX01_2025012117480000.zip";
+else if(m==="c65")targetLink="https://drive.google.com/file/d/1zweIY8F2SzkbfMGX7rilnIJFo8M5w3Al/view";
+else if(m==="c75x")targetLink="https://rms01.realme.net/sw/RMX5020export_11_15.0.0.750EX01_2025051614460000.zip";
+else if(m==="c55")targetLink="https://rms01.realme.net/sw/RMX3710export_11_14.0.0.1320EX01_2024120411520000.zip";
+else if(m==="procedimento")targetLink="https://www.mediafire.com/file/hjed1r13wrc8yrv/PROCEDIMENTOS_DE_REMO%25C3%2587AO_DE_TODOS_OS_REALME_MTK.rar/file";
+passwordBox.style.display="flex";terminal.innerHTML="> AUTH REQUIRED<br>> ENTER FIRST KEY";}
+function closePassword(){passwordBox.style.display="none";}
 function checkPass(){
-    if(attempts >= 3) return;
-
-    if(step === 1 && passInput.value === PASS1){
-        step = 2;
-        passInput.value = "";
-        terminal.innerHTML += "<br>> FIRST KEY OK<br>> ENTER SECOND KEY";
-        return;
-    }
-
-    if(step === 2 && passInput.value === PASS2){
-        success.style.display="block";
-        terminal.innerHTML += "<br>> ACCESS GRANTED";
-        passInput.disabled = true;
-        setTimeout(()=>{ window.location.href = targetLink; },1200);
-        return;
-    }
-
-    attempts++;
-    error.style.display="block";
-
-    if(attempts >= 3){
-        blocked.style.display="block";
-        passInput.disabled = true;
-    }
+if(attempts>=3)return;
+if(step===1&&passInput.value===PASS1){step=2;passInput.value="";terminal.innerHTML+="<br>> FIRST KEY OK<br>> ENTER SECOND KEY";return;}
+if(step===2&&passInput.value===PASS2){success.style.display="block";terminal.innerHTML+="<br>> ACCESS GRANTED";passInput.disabled=true;setTimeout(()=>{location.href=targetLink;},1200);return;}
+attempts++;error.style.display="block";
+if(attempts>=3){blocked.style.display="block";passInput.disabled=true;}
 }
-
-/* ===== BETA ===== */
-function betaLock(){
-    document.getElementById("betaBlock").style.display="flex";
-}
-function closeBeta(){
-    document.getElementById("betaBlock").style.display="none";
-}
+function betaLock(){betaBlock.style.display="flex";}
+function closeBeta(){betaBlock.style.display="none";}
 </script>
 
 </body>
