@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Atualizações de Patch de Segurança e MDM PAY JOY Definitivo | Família Unlocker</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    background: radial-gradient(circle at top, #02070a, #000);
+    font-family: Arial, Helvetica, sans-serif;
+    color: #b8cfc8;
+    overflow-x: hidden;
+}
+
+/* CANVAS FX */
+#fx {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* CONTEÚDO */
+.container {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: auto;
+    padding: 70px 20px 120px;
+}
+
+h1 {
+    text-align: center;
+    color: #7fffd4;
+    font-size: 26px;
+    margin-bottom: 14px;
+    text-shadow: 0 0 16px rgba(0,255,200,0.3);
+}
+
+.info {
+    margin: 0 auto 45px;
+    max-width: 780px;
+    padding: 18px 22px;
+    background: rgba(10, 25, 25, 0.65);
+    border: 1px solid rgba(127,255,212,0.25);
+    border-radius: 14px;
+    color: #cdeee4;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.section {
+    background: rgba(5, 10, 10, 0.85);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 38px;
+    box-shadow: 0 0 50px rgba(0,255,200,0.06);
+}
+
+.section h2 {
+    font-size: 17px;
+    color: #7fffd4;
+    margin-bottom: 20px;
+}
+
+.folder {
+    background: linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,255,200,0.05));
+    border: 1px solid rgba(127,255,212,0.25);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: #d8fff2;
+    display: flex;
+    justify-content: space-between;
+}
+
+.status {
+    font-size: 11px;
+    color: #7fffd4;
+}
+
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 60px;
+    color: #7fffd4;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.dev {
+    position: fixed;
+    bottom: 10px;
+    right: 14px;
+    font-size: 11px;
+    color: #233;
+    z-index: 3;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fx"></canvas>
+
+<div class="container">
+
+<h1>Atualizações de Patch de Segurança e MDM PAY JOY Definitivo</h1>
+
+<div class="info">
+⚠️ <strong>INFORMAÇÃO IMPORTANTE</strong><br>
+Atualizações de Patch de Segurança, MDM e <strong>PAY JOY DEFINITIVO</strong> monitoradas pela <strong>Família Unlocker</strong>.
+</div>
+
+<div class="section">
+    <h2>🧬 Repair IMEI</h2>
+    <div class="folder">
+        <span>📁 UNISOC • FULL NV</span>
+        <span class="status">ON</span>
+    </div>
+</div>
+
+<div class="section">
+    <h2>🔐 MDM Definitivo</h2>
+    <div class="folder">
+        <span>📁 OPPO A40</span>
+        <span class="status">ON</span>
+    </div>
+</div>
+
+<div class="section">
+    <h2>💾 Dumps</h2>
+    <div class="folder">
+        <span>📁 BOOT / NV / SYSTEM</span>
+        <span class="status">ON</span>
+    </div>
+</div>
+
+<a href="index.html" class="back">← Voltar</a>
+
+</div>
+
+<div class="dev">root@familia-unlocker:~# GSM_MESTRE</div>
+
+<script>
+const canvas = document.getElementById("fx");
+const ctx = canvas.getContext("2d");
+
+function resize() {
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+}
+resize();
+addEventListener("resize", resize);
+
+/* ===== CHUVA ===== */
+const rain = [];
+for (let i = 0; i < 160; i++) {
+    rain.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        speed: Math.random() * 1.5 + 0.5,
+        length: Math.random() * 30 + 15,
+        opacity: Math.random() * 0.4 + 0.1
+    });
+}
+
+/* ===== NEVOA ===== */
+const fog = [];
+for (let i = 0; i < 40; i++) {
+    fog.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 120 + 80,
+        speed: Math.random() * 0.15 + 0.05,
+        opacity: Math.random() * 0.04 + 0.02
+    });
+}
+
+/* ===== RAIOS ===== */
+let lightning = null;
+let lightningAlpha = 0;
+
+function createLightning() {
+    const x = Math.random() * canvas.width;
+    let y = 0;
+    const path = [{x, y}];
+
+    while (y < canvas.height) {
+        y += Math.random() * 40 + 20;
+        path.push({
+            x: path[path.length - 1].x + (Math.random() * 60 - 30),
+            y
+        });
+    }
+
+    lightning = path;
+    lightningAlpha = 1;
+}
+
+function drawRain() {
+    rain.forEach(r => {
+        ctx.strokeStyle = `rgba(160,255,240,${r.opacity})`;
+        ctx.beginPath();
+        ctx.moveTo(r.x, r.y);
+        ctx.lineTo(r.x, r.y + r.length);
+        ctx.stroke();
+        r.y += r.speed;
+        if (r.y > canvas.height) {
+            r.y = -50;
+            r.x = Math.random() * canvas.width;
+        }
+    });
+}
+
+function drawFog() {
+    fog.forEach(f => {
+        const g = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.radius);
+        g.addColorStop(0, `rgba(180,220,220,${f.opacity})`);
+        g.addColorStop(1, "rgba(0,0,0,0)");
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        f.x += f.speed;
+        if (f.x - f.radius > canvas.width) {
+            f.x = -f.radius;
+            f.y = Math.random() * canvas.height;
+        }
+    });
+}
+
+function drawLightning() {
+    if (!lightning && Math.random() < 0.004) {
+        createLightning();
+    }
+
+    if (lightning) {
+        ctx.strokeStyle = `rgba(200,255,255,${lightningAlpha})`;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(lightning[0].x, lightning[0].y);
+        for (let i = 1; i < lightning.length; i++) {
+            ctx.lineTo(lightning[i].x, lightning[i].y);
+        }
+        ctx.stroke();
+
+        ctx.fillStyle = `rgba(200,255,255,${lightningAlpha * 0.2})`;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        lightningAlpha *= 0.85;
+        if (lightningAlpha < 0.05) lightning = null;
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawFog();
+    drawRain();
+    drawLightning();
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>
