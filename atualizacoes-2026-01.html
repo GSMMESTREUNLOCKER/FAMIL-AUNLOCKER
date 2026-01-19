@@ -135,7 +135,7 @@ h1 {
     z-index: 3;
 }
 
-/* ===== MODAL SENHA (SEM MEXER NA UI) ===== */
+/* MODAL SENHA */
 #passwordBox {
     position: fixed;
     inset: 0;
@@ -169,8 +169,16 @@ h1 {
     font-family: monospace;
 }
 
+#enterBtn {
+    margin-top: 12px;
+    padding: 6px;
+    border: 1px solid #00ffcc;
+    text-align: center;
+    cursor: pointer;
+}
+
 #backArrow {
-    margin-top: 14px;
+    margin-top: 10px;
     text-align: center;
     cursor: pointer;
     color: #7fffd4;
@@ -229,34 +237,38 @@ Arquivos oficiais e definitivos de <strong>MDM / PAY JOY / PATCH</strong> monito
     <div id="terminal">
         <div>> ACCESS RESTRICTED</div>
         <div>> ENTER PASSWORD:</div>
-        <input type="password" id="passInput" autofocus>
+        <input type="password" id="passInput">
+        <div id="enterBtn" onclick="checkPass()">[ ENTER ]</div>
         <div id="backArrow" onclick="closePassword()">⬅ VOLTAR</div>
     </div>
 </div>
 
 <script>
 function openPassword() {
-    document.getElementById("passwordBox").style.display = "flex";
-    document.getElementById("passInput").value = "";
-    document.getElementById("passInput").focus();
+    passwordBox.style.display = "flex";
+    passInput.value = "";
+    passInput.focus();
 }
 
 function closePassword() {
-    document.getElementById("passwordBox").style.display = "none";
+    passwordBox.style.display = "none";
 }
 
-document.getElementById("passInput").addEventListener("keydown", function(e) {
-    if (e.key === "Enter") {
-        if (this.value === "OPPOA40202601A") {
-            window.location.href = "downloads/payjoy/oppo-a40/oppo-a40-payjoy.html";
-        } else {
-            alert("SENHA INCORRETA");
-            this.value = "";
-        }
+function checkPass() {
+    if (passInput.value === "OPPOA40202601A") {
+        window.location.href = "downloads/payjoy/oppo-a40/oppo-a40-payjoy.html";
+    } else {
+        alert("SENHA INCORRETA");
+        passInput.value = "";
+        passInput.focus();
     }
+}
+
+passInput.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") checkPass();
 });
 
-/* EFEITO CHUVA */
+/* CHUVA */
 const canvas = document.getElementById("fx");
 const ctx = canvas.getContext("2d");
 
