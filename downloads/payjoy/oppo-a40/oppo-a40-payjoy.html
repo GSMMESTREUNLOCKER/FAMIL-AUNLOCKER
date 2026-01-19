@@ -23,6 +23,24 @@ body {
     justify-content: center;
 }
 
+/* SETA VOLTAR */
+.back-arrow {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    color: #00ffd5;
+    font-size: 14px;
+    text-decoration: none;
+    opacity: 0.85;
+    transition: 0.2s;
+    z-index: 10;
+}
+
+.back-arrow:hover {
+    opacity: 1;
+    text-shadow: 0 0 8px rgba(0,255,200,0.8);
+}
+
 /* CONTAINER PRINCIPAL */
 .oem-box {
     width: 90%;
@@ -93,10 +111,34 @@ a[download]:hover {
     font-size: 11px;
     color: #666;
 }
+
+/* ===== AJUSTE MOBILE (SEM MEXER NO DESIGN) ===== */
+@media (max-width: 480px) {
+    .oem-box {
+        padding: 26px;
+        border-radius: 14px;
+    }
+
+    .oem-box h2 {
+        font-size: 20px;
+    }
+
+    .oem-desc {
+        font-size: 13px;
+    }
+
+    a[download] {
+        font-size: 15px;
+        padding: 16px;
+    }
+}
 </style>
 
 </head>
 <body>
+
+<!-- SETA VOLTAR -->
+<a href="javascript:history.back()" class="back-arrow">⬅ Voltar</a>
 
 <div class="oem-box">
 
