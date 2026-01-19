@@ -140,55 +140,6 @@ h1 {
     color: #233;
     z-index: 3;
 }
-
-/* MODAL SENHA */
-#passwordBox {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.9);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-}
-
-#terminal {
-    background: #000;
-    border: 1px solid #00ffcc;
-    border-radius: 10px;
-    width: 320px;
-    padding: 18px;
-    color: #00ffcc;
-    font-family: monospace;
-    font-size: 13px;
-}
-
-#terminal input {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #00ffcc;
-    color: #00ffcc;
-    outline: none;
-    padding: 6px 0;
-    margin-top: 10px;
-    font-family: monospace;
-}
-
-#enterBtn {
-    margin-top: 12px;
-    padding: 6px;
-    border: 1px solid #00ffcc;
-    text-align: center;
-    cursor: pointer;
-}
-
-#backArrow {
-    margin-top: 10px;
-    text-align: center;
-    cursor: pointer;
-    color: #7fffd4;
-}
 </style>
 </head>
 
@@ -216,20 +167,17 @@ Arquivos oficiais e definitivos de <strong>MDM / PAY JOY / PATCH</strong> monito
     <span class="status">BLOQUEADO</span>
 </div>
 
-<a href="https://drive.google.com/uc?export=download&id=1nUsqz7UQ5ie-WdtSDUCDJ2C3jowxCYTv"
-   class="folder" target="_blank">
+<a href="https://drive.google.com/uc?export=download&id=1nUsqz7UQ5ie-WdtSDUCDJ2C3jowxCYTv" class="folder" target="_blank">
     <span>📁 REPAIR IMEI REALME C63</span>
     <span class="status">DOWNLOAD</span>
 </a>
 
-<a href="https://drive.google.com/uc?export=download&id=1T1ThW-NYOm21j90-s5Dr5594y6YW-MQN"
-   class="folder" target="_blank">
+<a href="https://drive.google.com/uc?export=download&id=1T1ThW-NYOm21j90-s5Dr5594y6YW-MQN" class="folder" target="_blank">
     <span>📁 REPAIR IMEI REALME C61</span>
     <span class="status">DOWNLOAD</span>
 </a>
 
-<a href="https://drive.google.com/uc?export=download&id=18g69a-0BHj-nGVOn_DOeOl2kKPgeDqvB"
-   class="folder" target="_blank">
+<a href="https://drive.google.com/uc?export=download&id=18g69a-0BHj-nGVOn_DOeOl2kKPgeDqvB" class="folder" target="_blank">
     <span>📁 REPAIR IMEI REALME NOTE 70</span>
     <span class="status">DOWNLOAD</span>
 </a>
@@ -238,10 +186,18 @@ Arquivos oficiais e definitivos de <strong>MDM / PAY JOY / PATCH</strong> monito
 
 <div class="section">
 <h2>🔐 MDM & PAY JOY</h2>
+
 <div class="folder" onclick="openPassword()">
     <span>📁 OPPO A40 • PAY JOY DEFINITIVO</span>
     <span class="status">PROTEGIDO</span>
 </div>
+
+<a href="https://drive.google.com/uc?export=download&id=1eBV7ho7YLX4AV0oOr5Yj81YCk0MMIbiN"
+   class="folder" target="_blank">
+    <span>📁 MDM DIMO / TELA BRANCA • DEFINITIVO</span>
+    <span class="status">DOWNLOAD</span>
+</a>
+
 </div>
 
 <div class="section">
@@ -258,43 +214,7 @@ Arquivos oficiais e definitivos de <strong>MDM / PAY JOY / PATCH</strong> monito
 
 <div class="dev">root@familia-unlocker:~# GSM_MESTRE</div>
 
-<!-- MODAL -->
-<div id="passwordBox">
-    <div id="terminal">
-        <div>> ACCESS RESTRICTED</div>
-        <div>> ENTER PASSWORD:</div>
-        <input type="password" id="passInput">
-        <div id="enterBtn" onclick="checkPass()">[ ENTER ]</div>
-        <div id="backArrow" onclick="closePassword()">⬅ VOLTAR</div>
-    </div>
-</div>
-
 <script>
-function openPassword() {
-    passwordBox.style.display = "flex";
-    passInput.value = "";
-    passInput.focus();
-}
-
-function closePassword() {
-    passwordBox.style.display = "none";
-}
-
-function checkPass() {
-    if (passInput.value === "OPPOA40202601A") {
-        window.location.href = "downloads/payjoy/oppo-a40/oppo-a40-payjoy.html";
-    } else {
-        alert("SENHA INCORRETA");
-        passInput.value = "";
-        passInput.focus();
-    }
-}
-
-passInput.addEventListener("keydown", function(e) {
-    if (e.key === "Enter") checkPass();
-});
-
-/* CHUVA */
 const canvas = document.getElementById("fx");
 const ctx = canvas.getContext("2d");
 
