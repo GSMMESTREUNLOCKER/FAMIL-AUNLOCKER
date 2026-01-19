@@ -23,7 +23,6 @@ html, body {
     overflow-x: hidden;
 }
 
-/* CANVAS FX */
 #fx {
     position: fixed;
     inset: 0;
@@ -31,7 +30,6 @@ html, body {
     pointer-events: none;
 }
 
-/* CONTEÚDO */
 .container {
     position: relative;
     z-index: 2;
@@ -44,8 +42,26 @@ h1 {
     text-align: center;
     color: #7fffd4;
     font-size: 26px;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
     text-shadow: 0 0 16px rgba(0,255,200,0.3);
+}
+
+.badge {
+    display: inline-block;
+    margin: 0 auto 25px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: rgba(0,255,200,0.15);
+    border: 1px solid rgba(127,255,212,0.6);
+    color: #7fffd4;
+    font-size: 12px;
+    letter-spacing: 1px;
+    animation: blink 1.2s infinite;
+}
+
+@keyframes blink {
+    0%,100% { opacity: 1; box-shadow: 0 0 12px rgba(0,255,200,0.6); }
+    50% { opacity: 0.4; box-shadow: 0 0 2px rgba(0,255,200,0.2); }
 }
 
 .info {
@@ -85,6 +101,15 @@ h1 {
     color: #d8fff2;
     display: flex;
     justify-content: space-between;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    cursor: pointer;
+}
+
+.folder:hover {
+    background: linear-gradient(90deg, rgba(0,0,0,0.8), rgba(0,255,200,0.15));
+    box-shadow: 0 0 20px rgba(0,255,200,0.2);
+    transform: scale(1.02);
 }
 
 .status {
@@ -109,6 +134,47 @@ h1 {
     color: #233;
     z-index: 3;
 }
+
+/* ===== MODAL SENHA (SEM MEXER NA UI) ===== */
+#passwordBox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+#terminal {
+    background: #000;
+    border: 1px solid #00ffcc;
+    border-radius: 10px;
+    width: 320px;
+    padding: 18px;
+    color: #00ffcc;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+#terminal input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #00ffcc;
+    color: #00ffcc;
+    outline: none;
+    padding: 6px 0;
+    margin-top: 10px;
+    font-family: monospace;
+}
+
+#backArrow {
+    margin-top: 14px;
+    text-align: center;
+    cursor: pointer;
+    color: #7fffd4;
+}
 </style>
 </head>
 
@@ -118,35 +184,38 @@ h1 {
 
 <div class="container">
 
-<h1>Atualizações de Patch de Segurança e MDM PAY JOY Definitivo</h1>
+<h1>Atualizações de Patch de Segurança e MDM</h1>
+<div style="text-align:center">
+    <span class="badge">🔥 PAY JOY • DEFINITIVO</span>
+</div>
 
 <div class="info">
 ⚠️ <strong>INFORMAÇÃO IMPORTANTE</strong><br>
-Atualizações de Patch de Segurança, MDM e <strong>PAY JOY DEFINITIVO</strong> monitoradas pela <strong>Família Unlocker</strong>.
+Arquivos oficiais e definitivos de <strong>MDM / PAY JOY / PATCH</strong> monitorados pela <strong>Família Unlocker</strong>.
 </div>
 
 <div class="section">
-    <h2>🧬 Repair IMEI</h2>
-    <div class="folder">
-        <span>📁 UNISOC • FULL NV</span>
-        <span class="status">ON</span>
-    </div>
+<h2>🧬 Repair IMEI</h2>
+<a href="downloads/unisoc-full-nv.zip" class="folder">
+    <span>📁 UNISOC • FULL NV</span>
+    <span class="status">DOWNLOAD</span>
+</a>
 </div>
 
 <div class="section">
-    <h2>🔐 MDM Definitivo</h2>
-    <div class="folder">
-        <span>📁 OPPO A40</span>
-        <span class="status">ON</span>
-    </div>
+<h2>🔐 MDM & PAY JOY</h2>
+<div class="folder" onclick="openPassword()">
+    <span>📁 OPPO A40 • PAY JOY DEFINITIVO</span>
+    <span class="status">PROTEGIDO</span>
+</div>
 </div>
 
 <div class="section">
-    <h2>💾 Dumps</h2>
-    <div class="folder">
-        <span>📁 BOOT / NV / SYSTEM</span>
-        <span class="status">ON</span>
-    </div>
+<h2>💾 Dumps</h2>
+<a href="downloads/dumps-boot-nv-system.zip" class="folder">
+    <span>📁 BOOT / NV / SYSTEM</span>
+    <span class="status">DOWNLOAD</span>
+</a>
 </div>
 
 <a href="index.html" class="back">← Voltar</a>
@@ -155,7 +224,39 @@ Atualizações de Patch de Segurança, MDM e <strong>PAY JOY DEFINITIVO</strong>
 
 <div class="dev">root@familia-unlocker:~# GSM_MESTRE</div>
 
+<!-- MODAL -->
+<div id="passwordBox">
+    <div id="terminal">
+        <div>> ACCESS RESTRICTED</div>
+        <div>> ENTER PASSWORD:</div>
+        <input type="password" id="passInput" autofocus>
+        <div id="backArrow" onclick="closePassword()">⬅ VOLTAR</div>
+    </div>
+</div>
+
 <script>
+function openPassword() {
+    document.getElementById("passwordBox").style.display = "flex";
+    document.getElementById("passInput").value = "";
+    document.getElementById("passInput").focus();
+}
+
+function closePassword() {
+    document.getElementById("passwordBox").style.display = "none";
+}
+
+document.getElementById("passInput").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        if (this.value === "OPPOA40202601A") {
+            window.location.href = "downloads/payjoy/oppo-a40/oppo-a40-payjoy.html";
+        } else {
+            alert("SENHA INCORRETA");
+            this.value = "";
+        }
+    }
+});
+
+/* EFEITO CHUVA */
 const canvas = document.getElementById("fx");
 const ctx = canvas.getContext("2d");
 
@@ -166,7 +267,6 @@ function resize() {
 resize();
 addEventListener("resize", resize);
 
-/* ===== CHUVA ===== */
 const rain = [];
 for (let i = 0; i < 160; i++) {
     rain.push({
@@ -176,39 +276,6 @@ for (let i = 0; i < 160; i++) {
         length: Math.random() * 30 + 15,
         opacity: Math.random() * 0.4 + 0.1
     });
-}
-
-/* ===== NEVOA ===== */
-const fog = [];
-for (let i = 0; i < 40; i++) {
-    fog.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 120 + 80,
-        speed: Math.random() * 0.15 + 0.05,
-        opacity: Math.random() * 0.04 + 0.02
-    });
-}
-
-/* ===== RAIOS ===== */
-let lightning = null;
-let lightningAlpha = 0;
-
-function createLightning() {
-    const x = Math.random() * canvas.width;
-    let y = 0;
-    const path = [{x, y}];
-
-    while (y < canvas.height) {
-        y += Math.random() * 40 + 20;
-        path.push({
-            x: path[path.length - 1].x + (Math.random() * 60 - 30),
-            y
-        });
-    }
-
-    lightning = path;
-    lightningAlpha = 1;
 }
 
 function drawRain() {
@@ -226,55 +293,11 @@ function drawRain() {
     });
 }
 
-function drawFog() {
-    fog.forEach(f => {
-        const g = ctx.createRadialGradient(f.x, f.y, 0, f.x, f.y, f.radius);
-        g.addColorStop(0, `rgba(180,220,220,${f.opacity})`);
-        g.addColorStop(1, "rgba(0,0,0,0)");
-        ctx.fillStyle = g;
-        ctx.beginPath();
-        ctx.arc(f.x, f.y, f.radius, 0, Math.PI * 2);
-        ctx.fill();
-
-        f.x += f.speed;
-        if (f.x - f.radius > canvas.width) {
-            f.x = -f.radius;
-            f.y = Math.random() * canvas.height;
-        }
-    });
-}
-
-function drawLightning() {
-    if (!lightning && Math.random() < 0.004) {
-        createLightning();
-    }
-
-    if (lightning) {
-        ctx.strokeStyle = `rgba(200,255,255,${lightningAlpha})`;
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(lightning[0].x, lightning[0].y);
-        for (let i = 1; i < lightning.length; i++) {
-            ctx.lineTo(lightning[i].x, lightning[i].y);
-        }
-        ctx.stroke();
-
-        ctx.fillStyle = `rgba(200,255,255,${lightningAlpha * 0.2})`;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        lightningAlpha *= 0.85;
-        if (lightningAlpha < 0.05) lightning = null;
-    }
-}
-
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawFog();
     drawRain();
-    drawLightning();
     requestAnimationFrame(animate);
 }
-
 animate();
 </script>
 
