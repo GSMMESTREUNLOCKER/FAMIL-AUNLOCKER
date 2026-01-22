@@ -140,6 +140,34 @@ h1 {
     color: #233;
     z-index: 3;
 }
+
+/* WHATSAPP PROFISSIONAL – NÃO AFETA O SITE */
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    width: 52px;
+    height: 52px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(37,211,102,0.6);
+    animation: whatsapp-pulse 1.6s infinite;
+}
+
+.whatsapp-float img {
+    width: 26px;
+    height: 26px;
+}
+
+@keyframes whatsapp-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
+    70% { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
 </style>
 </head>
 
@@ -255,6 +283,11 @@ Arquivos oficiais e definitivos de <strong>MDM / PAY JOY / PATCH</strong> monito
 </div>
 
 <div class="dev">root@familia-unlocker:~# GSM_MESTRE</div>
+
+<!-- BOTÃO WHATSAPP -->
+<a href="https://wa.me/61996838053" target="_blank" class="whatsapp-float" aria-label="WhatsApp Família Unlocker">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+</a>
 
 <script>
 const canvas=document.getElementById("fx");
