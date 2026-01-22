@@ -7,245 +7,103 @@
 <title>Atualizações de Patch de Segurança e MDM PAY JOY Definitivo | Família Unlocker</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    user-select: none;
-}
+*{margin:0;padding:0;box-sizing:border-box;user-select:none}
+html,body{
+width:100%;min-height:100%;
+background:radial-gradient(circle at top,#02070a,#000);
+font-family:Arial,Helvetica,sans-serif;
+color:#b8cfc8;overflow-x:hidden}
+#fx{position:fixed;inset:0;z-index:0;pointer-events:none}
+.container{position:relative;z-index:2;max-width:900px;margin:auto;padding:70px 20px 120px}
+h1{text-align:center;color:#7fffd4;font-size:26px;margin-bottom:10px;text-shadow:0 0 16px rgba(0,255,200,.3)}
+.badge{display:inline-block;margin:0 auto 25px;padding:6px 16px;border-radius:20px;
+background:rgba(0,255,200,.15);border:1px solid rgba(127,255,212,.6);
+color:#7fffd4;font-size:12px;letter-spacing:1px;animation:blink 1.2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.info{margin:0 auto 45px;max-width:780px;padding:18px 22px;
+background:rgba(10,25,25,.65);border:1px solid rgba(127,255,212,.25);
+border-radius:14px;color:#cdeee4;font-size:13px;line-height:1.6;text-align:center}
+.section{background:rgba(5,10,10,.85);border-radius:16px;padding:28px;margin-bottom:38px}
+.section h2{font-size:17px;color:#7fffd4;margin-bottom:20px}
+.folder{
+background:linear-gradient(90deg,rgba(0,0,0,.6),rgba(0,255,200,.05));
+border:1px solid rgba(127,255,212,.25);
+border-radius:10px;padding:15px 20px;margin-bottom:14px;
+font-size:13px;color:#d8fff2;display:flex;justify-content:space-between;
+text-decoration:none;transition:.25s;cursor:pointer}
+.folder:hover{background:linear-gradient(90deg,rgba(0,0,0,.8),rgba(0,255,200,.15));
+box-shadow:0 0 20px rgba(0,255,200,.2);transform:scale(1.02)}
+.folder.locked{opacity:.45;cursor:not-allowed;pointer-events:none}
+.status{font-size:11px;color:#7fffd4}
+.back{text-align:center;display:block;margin-top:60px;color:#7fffd4;font-size:13px;text-decoration:none}
+.dev{position:fixed;bottom:10px;right:14px;font-size:11px;color:#233}
 
-html, body {
-    width: 100%;
-    min-height: 100%;
-    background: radial-gradient(circle at top, #02070a, #000);
-    font-family: Arial, Helvetica, sans-serif;
-    color: #b8cfc8;
-    overflow-x: hidden;
-}
-
-#fx {
-    position: fixed;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.container {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    margin: auto;
-    padding: 70px 20px 120px;
-}
-
-h1 {
-    text-align: center;
-    color: #7fffd4;
-    font-size: 26px;
-    margin-bottom: 10px;
-    text-shadow: 0 0 16px rgba(0,255,200,0.3);
-}
-
-.badge {
-    display: inline-block;
-    margin: 0 auto 25px;
-    padding: 6px 16px;
-    border-radius: 20px;
-    background: rgba(0,255,200,0.15);
-    border: 1px solid rgba(127,255,212,0.6);
-    color: #7fffd4;
-    font-size: 12px;
-    letter-spacing: 1px;
-    animation: blink 1.2s infinite;
-}
-
-@keyframes blink {
-    0%,100% { opacity: 1; box-shadow: 0 0 12px rgba(0,255,200,0.6); }
-    50% { opacity: 0.4; box-shadow: 0 0 2px rgba(0,255,200,0.2); }
-}
-
-.info {
-    margin: 0 auto 45px;
-    max-width: 780px;
-    padding: 18px 22px;
-    background: rgba(10, 25, 25, 0.65);
-    border: 1px solid rgba(127,255,212,0.25);
-    border-radius: 14px;
-    color: #cdeee4;
-    font-size: 13px;
-    line-height: 1.6;
-    text-align: center;
-}
-
-.section {
-    background: rgba(5, 10, 10, 0.85);
-    border-radius: 16px;
-    padding: 28px;
-    margin-bottom: 38px;
-    box-shadow: 0 0 50px rgba(0,255,200,0.06);
-}
-
-.section h2 {
-    font-size: 17px;
-    color: #7fffd4;
-    margin-bottom: 20px;
-}
-
-.folder {
-    background: linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,255,200,0.05));
-    border: 1px solid rgba(127,255,212,0.25);
-    border-radius: 10px;
-    padding: 15px 20px;
-    margin-bottom: 14px;
-    font-size: 13px;
-    color: #d8fff2;
-    display: flex;
-    justify-content: space-between;
-    text-decoration: none;
-    transition: all 0.25s ease;
-    cursor: pointer;
-}
-
-.folder:hover {
-    background: linear-gradient(90deg, rgba(0,0,0,0.8), rgba(0,255,200,0.15));
-    box-shadow: 0 0 20px rgba(0,255,200,0.2);
-    transform: scale(1.02);
-}
-
-.folder.locked {
-    opacity: 0.45;
-    cursor: not-allowed;
-    pointer-events: none;
-}
-
-.status {
-    font-size: 11px;
-    color: #7fffd4;
-}
-
-.back {
-    display: block;
-    text-align: center;
-    margin-top: 60px;
-    color: #7fffd4;
-    font-size: 13px;
-    text-decoration: none;
-}
-
-.dev {
-    position: fixed;
-    bottom: 10px;
-    right: 14px;
-    font-size: 11px;
-    color: #233;
-    z-index: 3;
-}
-
-/* WHATSAPP PROFISSIONAL – NÃO AFETA O SITE */
-.whatsapp-float {
-    position: fixed;
-    bottom: 24px;
-    left: 24px;
-    width: 52px;
-    height: 52px;
-    background: #25D366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    box-shadow: 0 0 20px rgba(37,211,102,0.6);
-    animation: whatsapp-pulse 1.6s infinite;
-}
-
-.whatsapp-float img {
-    width: 26px;
-    height: 26px;
-}
-
-@keyframes whatsapp-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.6); }
-    70% { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
-    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+.whatsapp-float{
+position:fixed;bottom:24px;left:24px;width:52px;height:52px;
+background:#25D366;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+z-index:9999;
+box-shadow:0 0 20px rgba(37,211,102,.6);
+animation:whatsapp-pulse 1.6s infinite}
+.whatsapp-float img{width:26px;height:26px}
+@keyframes whatsapp-pulse{
+0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}
+70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}
+100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
 }
 </style>
 </head>
 
 <body>
-
 <canvas id="fx"></canvas>
 
 <div class="container">
 
 <h1>Atualizações de Patch de Segurança e MDM</h1>
-<div style="text-align:center">
-    <span class="badge">🔥 PAY JOY • DEFINITIVO</span>
-</div>
+<div style="text-align:center"><span class="badge">🔥 PAY JOY • DEFINITIVO</span></div>
 
 <div class="info">
 ⚠️ <strong>INFORMAÇÃO IMPORTANTE</strong><br>
 Arquivos oficiais e definitivos de <strong>MDM / PAY JOY / PATCH</strong> monitorados pela <strong>Família Unlocker</strong>.
 </div>
 
-<!-- Repair IMEI -->
+<!-- REPAIR IMEI -->
 <div class="section">
 <h2>🧬 Repair IMEI</h2>
 
-<div class="folder locked">
-    <span>📁 REALME REPAIR NV UNISOC BETA</span>
-    <span class="status">BLOQUEADO</span>
-</div>
+<div class="folder locked"><span>📁 REALME REPAIR NV UNISOC BETA</span><span class="status">BLOQUEADO</span></div>
 
-<a href="https://drive.google.com/file/d/1nUsqz7UQ5ie-WdtSDUCDJ2C3jowxCYTv/view?usp=drive_link" class="folder" target="_blank">
-    <span>📁 REPAIR IMEI REALME C63</span>
-    <span class="status">DOWNLOAD</span>
-</a>
+<a href="https://drive.google.com/file/d/1nUsqz7UQ5ie-WdtSDUCDJ2C3jowxCYTv/view" class="folder" target="_blank">
+<span>📁 REPAIR IMEI REALME C63</span><span class="status">DOWNLOAD</span></a>
 
-<a href="https://drive.google.com/file/d/1T1ThW-NYOm21j90-s5Dr5594y6YW-MQN/view?usp=drive_link" class="folder" target="_blank">
-    <span>📁 REPAIR IMEI REALME C61</span>
-    <span class="status">DOWNLOAD</span>
-</a>
+<a href="https://drive.google.com/file/d/1T1ThW-NYOm21j90-s5Dr5594y6YW-MQN/view" class="folder" target="_blank">
+<span>📁 REPAIR IMEI REALME C61</span><span class="status">DOWNLOAD</span></a>
 
-<a href="https://drive.google.com/file/d/18g69a-0BHj-nGVOn_DOeOl2kKPgeDqvB/view?usp=drive_link" class="folder" target="_blank">
-    <span>📁 REPAIR IMEI REALME NOTE 70</span>
-    <span class="status">DOWNLOAD</span>
-</a>
+<a href="https://drive.google.com/file/d/18g69a-0BHj-nGVOn_DOeOl2kKPgeDqvB/view" class="folder" target="_blank">
+<span>📁 REPAIR IMEI REALME NOTE 70</span><span class="status">DOWNLOAD</span></a>
 </div>
 
 <!-- MDM -->
 <div class="section">
 <h2>🔐 MDM & PAY JOY</h2>
 
-<a href="https://drive.google.com/file/d/1wdrL7m5Nn2B_jySJQPYGB3oeIW4O0OFk/view?usp=drive_link" class="folder" target="_blank">
-    <span>📁 MDM OPPO A40 PAY JOY DEFINITIVO</span>
-    <span class="status">DOWNLOAD</span>
-</a>
+<a href="https://drive.google.com/file/d/1wdrL7m5Nn2B_jySJQPYGB3oeIW4O0OFk/view" class="folder" target="_blank">
+<span>📁 MDM OPPO A40 PAY JOY DEFINITIVO</span><span class="status">DOWNLOAD</span></a>
 
-<a href="https://drive.google.com/file/d/1eBV7ho7YLX4AV0oOr5Yj81YCk0MMIbiN/view?usp=drive_link" class="folder" target="_blank">
-    <span>📁 MDM DIMO / TELA BRANCA DEFINITIVO</span>
-    <span class="status">DOWNLOAD</span>
-</a>
+<a href="https://drive.google.com/file/d/1eBV7ho7YLX4AV0oOr5Yj81YCk0MMIbiN/view" class="folder" target="_blank">
+<span>📁 MDM DIMO / TELA BRANCA DEFINITIVO</span><span class="status">DOWNLOAD</span></a>
 
-<a href="https://drive.google.com/file/d/1qMw20TIT_EwqVE9emSH-Oa2oRpq_tgR8/view?usp=sharing" class="folder" target="_blank">
-    <span>📁 MDM PAY JOY REALME C71 E NOTE 70 DEFINITIVO</span>
-    <span class="status">DOWNLOAD</span>
-</a>
+<a href="https://drive.google.com/file/d/1qMw20TIT_EwqVE9emSH-Oa2oRpq_tgR8/view" class="folder" target="_blank">
+<span>📁 MDM PAY JOY REALME C71 E NOTE 70 DEFINITIVO</span><span class="status">DOWNLOAD</span></a>
 
-<div class="folder locked">
-    <span>📁 MDM HONOR X8C PAYJOY DEFINITIVO</span>
-    <span class="status">BLOQUEADO</span>
-</div>
+<div class="folder locked"><span>📁 MDM HONOR X8C PAYJOY DEFINITIVO</span><span class="status">BLOQUEADO</span></div>
 
-<!-- ALTERAÇÃO ÚNICA: X7C AGORA COM LINK -->
 <a href="https://www.mediafire.com/file/7z8fkud2osnudr2/HONOR_X7C_FULL_DUMP_ROCKGSM.rar/file" class="folder" target="_blank">
-    <span>📁 MDM HONOR X7C DEFINITIVO</span>
-    <span class="status">DOWNLOAD</span>
-</a>
+<span>📁 MDM HONOR X7C DEFINITIVO</span><span class="status">DOWNLOAD</span></a>
 
-<div class="folder locked">
-    <span>📁 MDM SECURITYPLUING BETA</span>
-    <span class="status">BLOQUEADO</span>
-</div>
+<div class="folder locked"><span>📁 ALL NEW METODO REALME MTK R-GUARD C/BOOT LOAD</span><span class="status">BLOQUEADO</span></div>
+
+<div class="folder locked"><span>📁 MDM SECURITYPLUING BETA</span><span class="status">BLOQUEADO</span></div>
 </div>
 
 <!-- DUMPS -->
@@ -253,30 +111,19 @@ Arquivos oficiais e definitivos de <strong>MDM / PAY JOY / PATCH</strong> monito
 <h2>💾 Dumps Repair System</h2>
 
 <a href="https://drive.google.com/file/d/1IfhIEfsut_ljLK65sjYWWRnMI_JeHxZZ/view" class="folder" target="_blank">
-    <span>📁 DUMP REALME NOTE 50</span>
-    <span class="status">DOWNLOAD</span>
-</a>
+<span>📁 DUMP REALME NOTE 50</span><span class="status">DOWNLOAD</span></a>
 
 <a href="https://drive.google.com/file/d/1t0gLW1NTVq-dEjIiAVWxKKd3lhS6g_9E/view" class="folder" target="_blank">
-    <span>📁 DUMP REALME NOTE 60</span>
-    <span class="status">DOWNLOAD</span>
-</a>
+<span>📁 DUMP REALME NOTE 60</span><span class="status">DOWNLOAD</span></a>
 
 <a href="https://drive.google.com/file/d/11O-WDGtk0CJCzDs-DteUDKRhY7hNS1hL/view" class="folder" target="_blank">
-    <span>📁 DUMP REALME NOTE 70</span>
-    <span class="status">DOWNLOAD</span>
-</a>
+<span>📁 DUMP REALME NOTE 70</span><span class="status">DOWNLOAD</span></a>
 
 <a href="https://drive.google.com/file/d/1qmUtad7gLNkVDDbGO3jTjt8frOFrRDiL/view" class="folder" target="_blank">
-    <span>📁 DUMP REALME NOTE 60S</span>
-    <span class="status">DOWNLOAD</span>
-</a>
+<span>📁 DUMP REALME NOTE 60S</span><span class="status">DOWNLOAD</span></a>
 
 <a href="https://drive.google.com/file/d/1Nt0BXtpBepc-ttKbGEqCeE5VAjm9Ythc/view" class="folder" target="_blank">
-    <span>📁 DUMP REALME C71</span>
-    <span class="status">DOWNLOAD</span>
-</a>
-
+<span>📁 DUMP REALME C71</span><span class="status">DOWNLOAD</span></a>
 </div>
 
 <a href="index.html" class="back">← Voltar</a>
@@ -285,54 +132,23 @@ Arquivos oficiais e definitivos de <strong>MDM / PAY JOY / PATCH</strong> monito
 
 <div class="dev">root@familia-unlocker:~# GSM_MESTRE</div>
 
-<!-- BOTÃO WHATSAPP -->
-<a href="https://wa.me/61996838053" target="_blank" class="whatsapp-float" aria-label="WhatsApp Família Unlocker">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+<a href="https://wa.me/61996838053" class="whatsapp-float" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
 <script>
-const canvas=document.getElementById("fx");
-const ctx=canvas.getContext("2d");
-
-function resize(){
-    canvas.width=innerWidth;
-    canvas.height=innerHeight;
-}
-resize();
-addEventListener("resize",resize);
-
-const rain=[];
-for(let i=0;i<160;i++){
-    rain.push({
-        x:Math.random()*canvas.width,
-        y:Math.random()*canvas.height,
-        speed:Math.random()*1.5+0.5,
-        length:Math.random()*30+15,
-        opacity:Math.random()*0.4+0.1
-    });
-}
-
-function drawRain(){
-    rain.forEach(r=>{
-        ctx.strokeStyle=`rgba(160,255,240,${r.opacity})`;
-        ctx.beginPath();
-        ctx.moveTo(r.x,r.y);
-        ctx.lineTo(r.x,r.y+r.length);
-        ctx.stroke();
-        r.y+=r.speed;
-        if(r.y>canvas.height){
-            r.y=-50;
-            r.x=Math.random()*canvas.width;
-        }
-    });
-}
-
-function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    drawRain();
-    requestAnimationFrame(animate);
-}
-animate();
+const canvas=document.getElementById("fx"),ctx=canvas.getContext("2d");
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+resize();addEventListener("resize",resize);
+const rain=[...Array(160)].map(()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,
+s:Math.random()*1.5+.5,l:Math.random()*30+15,o:Math.random()*.4+.1}));
+(function anim(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+rain.forEach(r=>{
+ctx.strokeStyle=`rgba(160,255,240,${r.o})`;
+ctx.beginPath();ctx.moveTo(r.x,r.y);ctx.lineTo(r.x,r.y+r.l);ctx.stroke();
+r.y+=r.s;if(r.y>canvas.height){r.y=-50;r.x=Math.random()*canvas.width}});
+requestAnimationFrame(anim)})();
 </script>
 
 </body>
