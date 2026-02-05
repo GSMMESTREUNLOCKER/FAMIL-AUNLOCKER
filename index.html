@@ -17,190 +17,113 @@
 </script>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-    background: black;
-    color: #00ff66;
-    height: 100vh;
-    overflow: hidden;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:black;color:#00ff66;height:100vh;overflow:hidden}
 
 /* CANVAS */
-#fx {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-}
+#fx{position:fixed;inset:0;z-index:0;pointer-events:none}
 
 /* CONTEÚDO */
-.container {
-    position: relative;
-    z-index: 2;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-    padding: 0 15px;
-}
+.container{position:relative;z-index:2;top:50%;transform:translateY(-50%);text-align:center;padding:0 15px}
 
 /* TÍTULO */
-h1 {
-    font-size: 48px;
-    text-shadow: 0 0 25px #00ff66;
-    margin-bottom: 15px;
-}
-
-/* SUB */
-p {
-    color: #ccc;
-    margin-bottom: 30px;
-    font-size: 18px;
-}
+h1{font-size:48px;text-shadow:0 0 25px #00ff66;margin-bottom:15px}
+p{color:#ccc;margin-bottom:30px;font-size:18px}
 
 /* BOTÕES */
-.btn {
-    display: inline-block;
-    margin: 12px;
-    padding: 14px 40px;
-    background: #00d957;
-    color: black;
-    font-size: 18px;
-    border-radius: 30px;
-    border: none;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 0 14px #00d957;
-    transition: 0.3s;
-    cursor: pointer;
+.btn{
+margin:12px;padding:14px 40px;
+background:#00d957;color:black;
+font-size:18px;border-radius:30px;
+text-decoration:none;font-weight:bold;
+box-shadow:0 0 14px #00d957;
+transition:.3s
 }
-
-.btn:hover {
-    background: #00c24d;
-    box-shadow: 0 0 22px #00d957;
-}
+.btn:hover{box-shadow:0 0 24px #00ff66}
 
 /* DROPDOWN */
-.dropdown {
-    position: relative;
-    display: inline-block;
+.dropdown{position:relative;display:inline-block}
+.dropdown-content{
+display:none;position:absolute;
+background:rgba(0,0,0,.95);
+min-width:220px;border-radius:20px;
+box-shadow:0 0 25px #00ff66;
+margin-top:12px;z-index:999
 }
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background: rgba(0,0,0,0.95);
-    min-width: 220px;
-    border-radius: 20px;
-    box-shadow: 0 0 25px #00ff66;
-    margin-top: 12px;
-    z-index: 999;
+.dropdown-content a,.dropdown-content span{
+display:block;padding:14px;
+color:#00ff66;text-decoration:none;font-weight:bold
 }
-
-.dropdown-content a,
-.dropdown-content span {
-    display: block;
-    padding: 14px;
-    color: #00ff66;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.beta {
-    cursor: not-allowed;
-    opacity: 0.6;
-}
+.beta{cursor:not-allowed;opacity:.6}
 
 /* ASSINATURA */
-.dev-credit {
-    position: fixed;
-    bottom: 8px;
-    right: 12px;
-    font-size: 11px;
-    letter-spacing: 1.5px;
-    opacity: 0.45;
-    z-index: 3;
+.dev-credit{
+position:fixed;bottom:8px;right:12px;
+font-size:11px;letter-spacing:1.5px;
+opacity:.45;z-index:3
 }
 
-/* WHATSAPP */
-.whatsapp-link {
-    position: fixed;
-    bottom: 12px;
-    left: 12px;
-    z-index: 5;
-    display: flex;
-    align-items: center;
-    background: rgba(0,0,0,0.85);
-    padding: 10px 16px;
-    border-radius: 30px;
-    text-decoration: none;
-    box-shadow: 0 0 20px rgba(255,0,0,0.6);
+/* ===== WHATSAPP PROFISSIONAL ===== */
+.whatsapp-link{
+position:fixed;bottom:12px;left:12px;
+z-index:6;display:flex;align-items:center;
+background:rgba(0,0,0,.9);
+padding:12px 18px;border-radius:40px;
+text-decoration:none;
+animation:pulseWhats 2s infinite
+}
+.whatsapp-link img{
+width:30px;
+filter:drop-shadow(0 0 6px #00ff66)
 }
 
-/* YOUTUBE */
-.youtube-link {
-    position: fixed;
-    top: 14px;
-    right: 14px;
-    z-index: 6;
-    display: flex;
-    align-items: center;
-    background: rgba(0,0,0,0.85);
-    padding: 10px 16px;
-    border-radius: 30px;
-    text-decoration: none;
-    box-shadow: 0 0 30px rgba(255,0,0,1);
+@keyframes pulseWhats{
+0%{box-shadow:0 0 0 0 rgba(0,255,100,.7)}
+70%{box-shadow:0 0 0 20px rgba(0,255,100,0)}
+100%{box-shadow:0 0 0 0 rgba(0,255,100,0)}
 }
 
-.youtube-link img {
-    width: 40px;
-    height: 40px;
-    filter:
-        saturate(2.2)
-        contrast(1.3)
-        drop-shadow(0 0 6px #ff0000)
-        drop-shadow(0 0 14px #ff0000)
-        drop-shadow(0 0 24px #990000);
+/* ===== YOUTUBE PROFISSIONAL ===== */
+.youtube-link{
+position:fixed;top:14px;right:14px;
+z-index:6;display:flex;align-items:center;
+background:rgba(0,0,0,.9);
+padding:12px 18px;border-radius:40px;
+text-decoration:none;
+animation:pulseYT 2.2s infinite
+}
+.youtube-link img{
+width:42px;
+filter:
+drop-shadow(0 0 8px #ff0000)
+drop-shadow(0 0 18px #ff0000)
 }
 
-/* CURSOR */
-#hacker-cursor {
-    position: fixed;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    pointer-events: none;
-    background: rgba(0,255,100,0.9);
-    box-shadow: 0 0 12px #00ff66;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
+@keyframes pulseYT{
+0%{box-shadow:0 0 0 0 rgba(255,0,0,.8)}
+70%{box-shadow:0 0 0 24px rgba(255,0,0,0)}
+100%{box-shadow:0 0 0 0 rgba(255,0,0,0)}
 }
 
-.hacker-trail {
-    position: fixed;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    pointer-events: none;
-    background: rgba(0,255,100,0.6);
-    box-shadow: 0 0 10px #00ff66;
-    z-index: 9998;
-    animation: hackerFade 0.6s linear forwards;
+/* CURSOR HACKER */
+#hacker-cursor{
+position:fixed;width:14px;height:14px;
+border-radius:50%;pointer-events:none;
+background:rgba(0,255,100,.9);
+box-shadow:0 0 12px #00ff66;
+transform:translate(-50%,-50%);
+z-index:9999
 }
-
-@keyframes hackerFade {
-    to {
-        opacity: 0;
-        transform: scale(0.2);
-    }
+.hacker-trail{
+position:fixed;width:6px;height:6px;
+border-radius:50%;pointer-events:none;
+background:rgba(0,255,100,.6);
+box-shadow:0 0 10px #00ff66;
+animation:hackerFade .6s linear forwards;
+z-index:9998
+}
+@keyframes hackerFade{
+to{opacity:0;transform:scale(.2)}
 }
 </style>
 </head>
@@ -210,114 +133,73 @@ p {
 <canvas id="fx"></canvas>
 
 <a href="https://youtube.com/@familiaunlocker?si=nDCA60eifuTSy3qn"
-   class="youtube-link"
-   target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg">
+   class="youtube-link" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg">
 </a>
 
 <div class="container">
-    <h1>Família Unlocker</h1>
-    <p>ROMs • REALME UNISOC • REALME MEDIATEK • OTA • Segurança Android</p>
+<h1>Família Unlocker</h1>
+<p>ROMs • REALME UNISOC • REALME MEDIATEK • OTA • Segurança Android</p>
 
-    <div class="dropdown">
-        <button class="btn" id="romsBtn" type="button">📂 ROMs</button>
-        <div class="dropdown-content" id="romsMenu">
-            <a href="unisoс.html">REALME UNISOC</a>
-            <span class="beta">QUALCOMM BETA</span>
-            <a href="MEDIATEK/index.html">REALME MEDIATEK</a>
-        </div>
-    </div>
+<div class="dropdown">
+<button class="btn" id="romsBtn">📂 ROMs</button>
+<div class="dropdown-content" id="romsMenu">
+<a href="unisoс.html">REALME UNISOC</a>
+<span class="beta">QUALCOMM BETA</span>
+<a href="MEDIATEK/index.html">REALME MEDIATEK</a>
+</div>
+</div>
 
-    <!-- ALTERADO APENAS O TEXTO -->
-    <a href="atualizacoes-2026-01.html" class="btn">
-        🔄 Atualizações 2026/02
-    </a>
-
-    <a href="alugueis-tools.html" class="btn">🛠️ ALUGUÉIS DE TOOLS</a>
+<a href="atualizacoes-2026-01.html" class="btn">🔄 Atualizações 2026/02</a>
+<a href="alugueis-tools.html" class="btn">🛠️ ALUGUÉIS DE TOOLS</a>
 </div>
 
 <div class="dev-credit">root@familia-unlocker:~# GSM_MESTRE</div>
 
 <a href="https://chat.whatsapp.com/B7ZnnZNXxjOASMdznPyrx8"
-   class="whatsapp-link"
-   target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="28">
+   class="whatsapp-link" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
 <script>
-const canvas = document.getElementById("fx");
-const ctx = canvas.getContext("2d");
+const canvas=document.getElementById("fx"),ctx=canvas.getContext("2d");
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
+resize();addEventListener("resize",resize);
 
-function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener("resize", resize);
+let drops=[];
+for(let i=0;i<350;i++)
+drops.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,s:6+Math.random()*8,l:15+Math.random()*25});
 
-let drops = [];
-for (let i = 0; i < 350; i++) {
-    drops.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        speed: 6 + Math.random() * 8,
-        length: 15 + Math.random() * 25
-    });
-}
+function rain(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.strokeStyle="rgba(0,255,100,.8)";
+for(let d of drops){
+ctx.beginPath();
+ctx.moveTo(d.x,d.y);
+ctx.lineTo(d.x,d.y+d.l);
+ctx.stroke();
+d.y+=d.s;
+if(d.y>canvas.height){d.y=-30;d.x=Math.random()*canvas.width}
+}}
+(function animate(){rain();requestAnimationFrame(animate)})();
 
-function rain() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = "rgba(0,255,100,0.8)";
-    ctx.lineWidth = 1;
+const btn=document.getElementById("romsBtn"),
+menu=document.getElementById("romsMenu");
+btn.onclick=e=>{e.stopPropagation();menu.style.display=menu.style.display==="block"?"none":"block"};
+document.onclick=()=>menu.style.display="none";
 
-    for (let d of drops) {
-        ctx.beginPath();
-        ctx.moveTo(d.x, d.y);
-        ctx.lineTo(d.x, d.y + d.length);
-        ctx.stroke();
-        d.y += d.speed;
-        if (d.y > canvas.height) {
-            d.y = -30;
-            d.x = Math.random() * canvas.width;
-        }
-    }
-}
-
-function animate() {
-    rain();
-    requestAnimationFrame(animate);
-}
-animate();
-
-const romsBtn = document.getElementById("romsBtn");
-const romsMenu = document.getElementById("romsMenu");
-
-romsBtn.addEventListener("click", e => {
-    e.stopPropagation();
-    romsMenu.style.display =
-        romsMenu.style.display === "block" ? "none" : "block";
-});
-
-document.addEventListener("click", () => {
-    romsMenu.style.display = "none";
-});
-
-const hackerCursor = document.createElement("div");
-hackerCursor.id = "hacker-cursor";
-document.body.appendChild(hackerCursor);
-
-document.addEventListener("mousemove", e => {
-    hackerCursor.style.left = e.clientX + "px";
-    hackerCursor.style.top = e.clientY + "px";
-
-    const trail = document.createElement("div");
-    trail.className = "hacker-trail";
-    trail.style.left = e.clientX + "px";
-    trail.style.top = e.clientY + "px";
-    document.body.appendChild(trail);
-
-    setTimeout(() => trail.remove(), 600);
-});
+const cursor=document.createElement("div");
+cursor.id="hacker-cursor";document.body.appendChild(cursor);
+document.onmousemove=e=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+let t=document.createElement("div");
+t.className="hacker-trail";
+t.style.left=e.clientX+"px";
+t.style.top=e.clientY+"px";
+document.body.appendChild(t);
+setTimeout(()=>t.remove(),600);
+};
 </script>
 
 </body>
