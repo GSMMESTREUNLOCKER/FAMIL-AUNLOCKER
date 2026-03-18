@@ -89,18 +89,179 @@ animation:whatsapp-pulse 1.6s infinite}
 0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}
 70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}
 100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* ===== AVISO TERROR ===== */
+.notice-wrap{
+position:fixed;
+top:18px;
+right:18px;
+z-index:99999;
+display:flex;
+flex-direction:column;
+align-items:center;
+text-decoration:none;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+.notice-oem{
+position:relative;
+width:66px;
+height:66px;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:radial-gradient(circle at 30% 30%,#6b0000,#130000 70%);
+border:1px solid rgba(255,60,60,.8);
+box-shadow:
+0 0 10px rgba(255,0,0,.3),
+0 0 25px rgba(255,0,0,.2),
+inset 0 0 10px rgba(0,0,0,.8);
+animation:horrorPulse 2.8s infinite ease-in-out;
+overflow:visible;
+}
+
+.notice-oem svg{
+width:30px;
+height:30px;
+stroke:#ffdcdc;
+stroke-width:2.2;
+fill:none;
+filter:drop-shadow(0 0 6px rgba(255,0,0,.6));
+}
+
+.notice-oem::before,
+.notice-oem::after{
+content:"";
+position:absolute;
+bottom:-8px;
+background:linear-gradient(#ff1a1a,#3b0000);
+border-radius:0 0 10px 10px;
+animation:drip 2.4s infinite ease-in-out;
+filter:blur(.3px);
+}
+
+.notice-oem::before{
+width:10px;
+height:18px;
+left:18px;
+animation-delay:.2s;
+}
+
+.notice-oem::after{
+width:7px;
+height:14px;
+right:16px;
+animation-delay:.8s;
+}
+
+@keyframes horrorPulse{
+0%{
+box-shadow:
+0 0 6px rgba(255,0,0,.25),
+0 0 16px rgba(255,0,0,.18);
+opacity:1;
+}
+50%{
+box-shadow:
+0 0 22px rgba(255,0,0,.7),
+0 0 55px rgba(255,0,0,.3);
+opacity:.85;
+}
+100%{
+box-shadow:
+0 0 6px rgba(255,0,0,.25),
+0 0 16px rgba(255,0,0,.18);
+opacity:1;
+}
+}
+
+@keyframes drip{
+0%{transform:translateY(0) scaleY(1)}
+50%{transform:translateY(5px) scaleY(1.3)}
+100%{transform:translateY(0) scaleY(1)}
+}
+
+.notice-label{
+margin-top:8px;
+padding:5px 12px;
+border-radius:999px;
+background:linear-gradient(#ff1c1c,#4a0000);
+color:#fff;
+font-size:11px;
+font-weight:700;
+letter-spacing:1.5px;
+box-shadow:0 0 12px rgba(255,0,0,.5);
+animation:labelPulse 2.2s infinite ease-in-out;
+}
+
+@keyframes labelPulse{
+0%,100%{opacity:1}
+50%{opacity:.7}
+}
+
+.notice-tip{
+margin-top:7px;
+max-width:170px;
+padding:8px 10px;
+border-radius:10px;
+background:rgba(20,0,0,.9);
+border:1px solid rgba(255,70,70,.3);
+color:#ffdede;
+font-size:11px;
+line-height:1.4;
+text-align:center;
+box-shadow:0 0 10px rgba(255,0,0,.15);
+}
+
+@media(max-width:768px){
+.notice-wrap{
+top:14px;
+right:14px;
+}
+.notice-oem{
+width:58px;
+height:58px;
+border-radius:16px;
+}
+.notice-oem svg{
+width:24px;
+height:24px;
+}
+.notice-label{
+font-size:10px;
+padding:4px 10px;
+}
+.notice-tip{
+max-width:145px;
+font-size:10px;
+padding:7px 9px;
+}
+}
 </style>
 </head>
 
 <body>
 <canvas id="fx"></canvas>
 
+<a href="#info-site" class="notice-wrap" aria-label="Aviso">
+<div class="notice-oem">
+<svg viewBox="0 0 24 24">
+<path d="M12 8v5"></path>
+<circle cx="12" cy="17" r="1" fill="#ffdcdc" stroke="none"></circle>
+<path d="M10 3L2 20h20L14 3z"></path>
+</svg>
+</div>
+<div class="notice-label">AVISO</div>
+<div class="notice-tip">Processos completos e suporte</div>
+</a>
+
 <div class="container">
 
 <h1>Atualizações de Patch de Segurança e MDM</h1>
 <div style="text-align:center"><span class="badge">🔥 PAY JOY • DEFINITIVO</span></div>
 
-<div class="info">
+<div class="info" id="info-site">
 ⚠️ <strong>INFORMAÇÃO IMPORTANTE</strong><br>
 Arquivos oficiais e definitivos de <strong>MDM / PAY JOY / PATCH</strong> monitorados pela <strong>Família Unlocker</strong>.
 </div>
@@ -110,56 +271,60 @@ Arquivos oficiais e definitivos de <strong>MDM / PAY JOY / PATCH</strong> monito
 
 <div class="folder locked"><span>📁 REALME REPAIR NV UNISOC BETA</span><span class="status">BLOQUEADO</span></div>
 
-<a href="https://drive.google.com/file/d/1nUsqz7UQ5ie-WdtSDUCDJ2C3jowxCYTv/view" class="folder" target="_blank">
+<a href="https://drive.google.com/file/d/1nUsqz7UQ5ie-WdtSDUCDJ2C3jowxCYTv/view" class="folder" target="_blank" rel="noopener noreferrer">
 <span>📁 REPAIR IMEI REALME C63</span><span class="status">DOWNLOAD</span></a>
 
-<a href="https://drive.google.com/file/d/1T1ThW-NYOm21j90-s5Dr5594y6YW-MQN/view" class="folder" target="_blank">
+<a href="https://drive.google.com/file/d/1T1ThW-NYOm21j90-s5Dr5594y6YW-MQN/view" class="folder" target="_blank" rel="noopener noreferrer">
 <span>📁 REPAIR IMEI REALME C61</span><span class="status">DOWNLOAD</span></a>
 
-<a href="https://drive.google.com/file/d/18g69a-0BHj-nGVOn_DOeOl2kKPgeDqvB/view" class="folder" target="_blank">
+<a href="https://drive.google.com/file/d/18g69a-0BHj-nGVOn_DOeOl2kKPgeDqvB/view" class="folder" target="_blank" rel="noopener noreferrer">
 <span>📁 REPAIR IMEI REALME NOTE 70</span><span class="status">DOWNLOAD</span></a>
 </div>
 
 <div class="section">
 <h2>🔐 MDM & PAY JOY</h2>
 
-<a href="https://drive.google.com/file/d/1wdrL7m5Nn2B_jySJQPYGB3oeIW4O0OFk/view" class="folder" target="_blank">
+<a href="https://drive.google.com/file/d/1wdrL7m5Nn2B_jySJQPYGB3oeIW4O0OFk/view" class="folder" target="_blank" rel="noopener noreferrer">
 <span>📁 MDM OPPO A40 PAY JOY DEFINITIVO</span><span class="status">DOWNLOAD</span></a>
 
-<a href="https://drive.google.com/file/d/1eBV7ho7YLX4AV0oOr5Yj81YCk0MMIbiN/view" class="folder" target="_blank">
+<a href="https://drive.google.com/file/d/1eBV7ho7YLX4AV0oOr5Yj81YCk0MMIbiN/view" class="folder" target="_blank" rel="noopener noreferrer">
 <span>📁 MDM DIMO / TELA BRANCA DEFINITIVO</span><span class="status">DOWNLOAD</span></a>
 
-<a href="https://drive.google.com/file/d/1qMw20TIT_EwqVE9emSH-Oa2oRpq_tgR8/view" class="folder" target="_blank">
+<a href="https://drive.google.com/file/d/1qMw20TIT_EwqVE9emSH-Oa2oRpq_tgR8/view" class="folder" target="_blank" rel="noopener noreferrer">
 <span>📁 MDM PAY JOY REALME C71 E NOTE 70 DEFINITIVO</span><span class="status">DOWNLOAD</span></a>
 
 <a href="https://www.mediafire.com/file/y0eye035q96tula/X8C_FULL_DUMP_ROCKGSM.rar/file"
-class="folder free-pulse" target="_blank">
+class="folder free-pulse" target="_blank" rel="noopener noreferrer">
 <span>📁 MDM HONOR X8C PAYJOY DEFINITIVO • GRÁTIS</span>
 <span class="status">DOWNLOAD</span>
 </a>
 
-<a href="https://www.mediafire.com/file/7z8fkud2osnudr2/HONOR_X7C_FULL_DUMP_ROCKGSM.rar/file" class="folder" target="_blank">
+<a href="https://www.mediafire.com/file/7z8fkud2osnudr2/HONOR_X7C_FULL_DUMP_ROCKGSM.rar/file" class="folder" target="_blank" rel="noopener noreferrer">
 <span>📁 MDM HONOR X7C DEFINITIVO</span><span class="status">DOWNLOAD</span></a>
 
 <a href="https://drive.google.com/file/d/1_MO9U2HPp71Vwf6p00uO1-WaDaSObpPa/view?usp=sharing"
-class="folder" target="_blank">
+class="folder" target="_blank" rel="noopener noreferrer">
 <span>📁 MDM NEW METODO REALME MTK R-GUARD C/BOOT LOAD ON</span>
 <span class="status">DOWNLOAD</span>
 </a>
 
 <div class="folder locked"><span>📁 MDM SECURITYPLUING BETA</span><span class="status">BLOQUEADO</span></div>
 
-<!-- ✅ AQUI FOI A ÚNICA TROCA (href) -->
-<a href="https://drive.google.com/file/d/1wtHHAa59oJGSfGVEk-BRuXENvvZWADGX/view?usp=sharing" class="folder folder-new" target="_blank">
+<a href="https://drive.google.com/file/d/1wtHHAa59oJGSfGVEk-BRuXENvvZWADGX/view?usp=sharing" class="folder folder-new" target="_blank" rel="noopener noreferrer">
 <div class="new-badge">🔥 NOVO</div>
 <span>📁 MDM PAY JOY REALME C85 PRO, C85, 14T E OUTROS (QUALCOMM / MEDIATEK)</span>
 <span class="status">NOVO</span>
 </a>
 
-<!-- ✅ NOVO ITEM PROFISSIONAL (APENAS ADIÇÃO) -->
-<a href="https://drive.google.com/file/d/1LICRkp_cexiAKXDBD7Tcsldy2GluRBIq/view?usp=sharing" class="folder folder-new" target="_blank">
+<a href="https://drive.google.com/file/d/1LICRkp_cexiAKXDBD7Tcsldy2GluRBIq/view?usp=sharing" class="folder folder-new" target="_blank" rel="noopener noreferrer">
 <div class="new-badge">🔥 NOVO</div>
 <span>📁 MDM REALME R-GUARD/ORDCESS ATUALIZADO "UNISOC"</span>
+<span class="status">NOVO</span>
+</a>
+
+<a href="https://drive.google.com/file/d/1eUiKsaJJhrlbikFplKQOqQS76QVbqFVd/view?usp=sharing" class="folder folder-new" target="_blank" rel="noopener noreferrer">
+<div class="new-badge">🔥 NOVO</div>
+<span>📁 MDM PAY JOY QUALCOMM REALME 12 PRO PLUS</span>
 <span class="status">NOVO</span>
 </a>
 
@@ -168,19 +333,19 @@ class="folder" target="_blank">
 <div class="section">
 <h2>💾 Dumps Repair System</h2>
 
-<a href="https://drive.google.com/file/d/1IfhIEfsut_ljLK65sjYWWRnMI_JeHxZZ/view" class="folder" target="_blank">
+<a href="https://drive.google.com/file/d/1IfhIEfsut_ljLK65sjYWWRnMI_JeHxZZ/view" class="folder" target="_blank" rel="noopener noreferrer">
 <span>📁 DUMP REALME NOTE 50</span><span class="status">DOWNLOAD</span></a>
 
-<a href="https://drive.google.com/file/d/1t0gLW1NTVq-dEjIiAVWxKKd3lhS6g_9E/view" class="folder" target="_blank">
+<a href="https://drive.google.com/file/d/1t0gLW1NTVq-dEjIiAVWxKKd3lhS6g_9E/view" class="folder" target="_blank" rel="noopener noreferrer">
 <span>📁 DUMP REALME NOTE 60</span><span class="status">DOWNLOAD</span></a>
 
-<a href="https://drive.google.com/file/d/11O-WDGtk0CJCzDs-DteUDKRhY7hNS1hL/view" class="folder" target="_blank">
+<a href="https://drive.google.com/file/d/11O-WDGtk0CJCzDs-DteUDKRhY7hNS1hL/view" class="folder" target="_blank" rel="noopener noreferrer">
 <span>📁 DUMP REALME NOTE 70</span><span class="status">DOWNLOAD</span></a>
 
-<a href="https://drive.google.com/file/d/1qmUtad7gLNkVDDbGO3jTjt8frOFrRDiL/view" class="folder" target="_blank">
+<a href="https://drive.google.com/file/d/1qmUtad7gLNkVDDbGO3jTjt8frOFrRDiL/view" class="folder" target="_blank" rel="noopener noreferrer">
 <span>📁 DUMP REALME NOTE 60S</span><span class="status">DOWNLOAD</span></a>
 
-<a href="https://drive.google.com/file/d/1Nt0BXtpBepc-ttKbGEqCeE5VAjm9Ythc/view" class="folder" target="_blank">
+<a href="https://drive.google.com/file/d/1Nt0BXtpBepc-ttKbGEqCeE5VAjm9Ythc/view" class="folder" target="_blank" rel="noopener noreferrer">
 <span>📁 DUMP REALME C71</span><span class="status">DOWNLOAD</span></a>
 </div>
 
@@ -189,15 +354,15 @@ class="folder" target="_blank">
 
 <div class="dev">root@familia-unlocker:~# GSM_MESTRE</div>
 
-<a href="https://wa.me/61996838053" class="whatsapp-float" target="_blank">
-<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+<a href="https://wa.me/61996838053" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
 
 <script>
 const canvas=document.getElementById("fx"),ctx=canvas.getContext("2d");
 function resize(){canvas.width=innerWidth;canvas.height=innerHeight}
 resize();addEventListener("resize",resize);
-const rain=[...Array(160)].map(()=>({
+const rain=[...Array(160)].map(() => ({
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
 s:Math.random()*1.5+.5,
